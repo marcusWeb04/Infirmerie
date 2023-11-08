@@ -10,11 +10,36 @@ using System.Windows.Forms;
 
 namespace InfirmerieGUI
 {
-    public partial class Form1 : Form
+    public partial class Connexion : Form
     {
-        public Form1()
+        public Connexion()
         {
             InitializeComponent();
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxIdentifiant_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Connexion_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

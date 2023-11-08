@@ -1,6 +1,6 @@
 ﻿namespace InfirmerieGUI
 {
-    partial class Form1
+    partial class Connexion
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -28,13 +28,130 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.buttonSeconnecter = new System.Windows.Forms.Button();
+            this.labelConnexion = new System.Windows.Forms.Label();
+            this.textBoxIdentifiant = new System.Windows.Forms.TextBox();
+            this.labelIdentifiant = new System.Windows.Forms.Label();
+            this.labelMotdepasse = new System.Windows.Forms.Label();
+            this.textBoxMotdepasse = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.SuspendLayout();
+            // 
+            // buttonSeconnecter
+            // 
+            this.buttonSeconnecter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(168)))), ((int)(((byte)(134)))));
+            this.buttonSeconnecter.FlatAppearance.BorderSize = 0;
+            this.buttonSeconnecter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSeconnecter.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSeconnecter.ForeColor = System.Drawing.Color.White;
+            this.buttonSeconnecter.Location = new System.Drawing.Point(559, 631);
+            this.buttonSeconnecter.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonSeconnecter.Name = "buttonSeconnecter";
+            this.buttonSeconnecter.Size = new System.Drawing.Size(323, 80);
+            this.buttonSeconnecter.TabIndex = 0;
+            this.buttonSeconnecter.Text = "Se connecter";
+            this.buttonSeconnecter.UseVisualStyleBackColor = false;
+            // 
+            // labelConnexion
+            // 
+            this.labelConnexion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.labelConnexion.Font = new System.Drawing.Font("Arial", 31.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConnexion.Location = new System.Drawing.Point(559, 113);
+            this.labelConnexion.Name = "labelConnexion";
+            this.labelConnexion.Size = new System.Drawing.Size(323, 116);
+            this.labelConnexion.TabIndex = 1;
+            this.labelConnexion.Text = "Connexion";
+            this.labelConnexion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelConnexion.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // textBoxIdentifiant
+            // 
+            this.textBoxIdentifiant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxIdentifiant.Font = new System.Drawing.Font("Arial", 16F);
+            this.textBoxIdentifiant.Location = new System.Drawing.Point(559, 331);
+            this.textBoxIdentifiant.MaxLength = 32;
+            this.textBoxIdentifiant.Multiline = true;
+            this.textBoxIdentifiant.Name = "textBoxIdentifiant";
+            this.textBoxIdentifiant.Size = new System.Drawing.Size(323, 59);
+            this.textBoxIdentifiant.TabIndex = 4;
+            this.textBoxIdentifiant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxIdentifiant.WordWrap = false;
+            this.textBoxIdentifiant.TextChanged += new System.EventHandler(this.textBoxIdentifiant_TextChanged);
+            // 
+            // labelIdentifiant
+            // 
+            this.labelIdentifiant.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.labelIdentifiant.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelIdentifiant.Location = new System.Drawing.Point(559, 277);
+            this.labelIdentifiant.Name = "labelIdentifiant";
+            this.labelIdentifiant.Size = new System.Drawing.Size(323, 44);
+            this.labelIdentifiant.TabIndex = 6;
+            this.labelIdentifiant.Text = "Identifiant :";
+            this.labelIdentifiant.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelMotdepasse
+            // 
+            this.labelMotdepasse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.labelMotdepasse.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMotdepasse.Location = new System.Drawing.Point(559, 421);
+            this.labelMotdepasse.Name = "labelMotdepasse";
+            this.labelMotdepasse.Size = new System.Drawing.Size(323, 44);
+            this.labelMotdepasse.TabIndex = 7;
+            this.labelMotdepasse.Text = "Mot de passe :";
+            this.labelMotdepasse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelMotdepasse.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // textBoxMotdepasse
+            // 
+            this.textBoxMotdepasse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxMotdepasse.Font = new System.Drawing.Font("Arial", 16F);
+            this.textBoxMotdepasse.Location = new System.Drawing.Point(559, 475);
+            this.textBoxMotdepasse.MaxLength = 32;
+            this.textBoxMotdepasse.Multiline = true;
+            this.textBoxMotdepasse.Name = "textBoxMotdepasse";
+            this.textBoxMotdepasse.Size = new System.Drawing.Size(323, 59);
+            this.textBoxMotdepasse.TabIndex = 8;
+            this.textBoxMotdepasse.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMotdepasse.WordWrap = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.panel1.Enabled = false;
+            this.panel1.Location = new System.Drawing.Point(436, 48);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(568, 730);
+            this.panel1.TabIndex = 0;
+            // 
+            // Connexion
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1422, 977);
+            this.Controls.Add(this.textBoxMotdepasse);
+            this.Controls.Add(this.labelMotdepasse);
+            this.Controls.Add(this.labelIdentifiant);
+            this.Controls.Add(this.textBoxIdentifiant);
+            this.Controls.Add(this.labelConnexion);
+            this.Controls.Add(this.buttonSeconnecter);
+            this.Controls.Add(this.panel1);
+            this.Name = "Connexion";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Connexion_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button buttonSeconnecter;
+        private System.Windows.Forms.Label labelConnexion;
+        private System.Windows.Forms.TextBox textBoxIdentifiant;
+        private System.Windows.Forms.Label labelIdentifiant;
+        private System.Windows.Forms.Label labelMotdepasse;
+        private System.Windows.Forms.TextBox textBoxMotdepasse;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
