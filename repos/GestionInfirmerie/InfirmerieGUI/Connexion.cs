@@ -41,5 +41,12 @@ namespace InfirmerieGUI
         {
 
         }
+
+        private void buttonSeconnecter_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Accueil Accueil = new Accueil();
+            Accueil.ShowDialog();
+        }
     }
 }

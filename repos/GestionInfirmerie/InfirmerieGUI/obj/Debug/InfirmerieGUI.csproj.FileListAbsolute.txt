@@ -8,3 +8,4 @@ C:\Users\admin\source\repos\GestionInfirmerie\InfirmerieGUI\obj\Debug\Infirmerie
 C:\Users\admin\source\repos\GestionInfirmerie\InfirmerieGUI\obj\Debug\InfirmerieGUI.exe
 C:\Users\admin\source\repos\GestionInfirmerie\InfirmerieGUI\obj\Debug\InfirmerieGUI.pdb
 C:\Users\admin\source\repos\GestionInfirmerie\InfirmerieGUI\obj\Debug\InfirmerieGUI.Connexion.resources
+C:\Users\admin\source\repos\GestionInfirmerie\InfirmerieGUI\obj\Debug\InfirmerieGUI.Accueil.resources

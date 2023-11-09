@@ -51,6 +51,7 @@
             this.buttonSeconnecter.TabIndex = 0;
             this.buttonSeconnecter.Text = "Se connecter";
             this.buttonSeconnecter.UseVisualStyleBackColor = false;
+            this.buttonSeconnecter.Click += new System.EventHandler(this.buttonSeconnecter_Click);
             // 
             // labelConnexion
             // 
@@ -127,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1422, 977);
+            this.ClientSize = new System.Drawing.Size(1422, 877);
             this.Controls.Add(this.textBoxMotdepasse);
             this.Controls.Add(this.labelMotdepasse);
             this.Controls.Add(this.labelIdentifiant);
