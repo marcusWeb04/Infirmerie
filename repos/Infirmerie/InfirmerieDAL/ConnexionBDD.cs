@@ -65,9 +65,9 @@ namespace InfirmerieDAL
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = maConnexion;
             cmd.CommandText =
-                "SELECT * FROM utilisateur " +
-                "WHERE utilisateur_login = '" + uti.login +
-                "'AND utilisateur_mdp = '" + uti.mdp + "'";
+                "SELECT * FROM utilisateur WHERE utilisateur_login = @login AND utilisateur_mdp = @mdp ";
+            cmd.Parameters.AddWithValue("@login", uti.login);
+            cmd.Parameters.AddWithValue("@mdp", uti.mdp);
             result = cmd.ExecuteReader();
             bool res = result.HasRows;
             maConnexion.Close();
