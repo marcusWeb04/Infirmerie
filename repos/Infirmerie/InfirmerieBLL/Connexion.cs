@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using InfirmerieDAL;
 using InfirmerieBO;
-
+-
 namespace InfirmerieBLL
 {
     public class ConnexionBLL
@@ -23,12 +23,14 @@ namespace InfirmerieBLL
             return uneConnexionBLL;
         }
 
+        //Méthode qui permet d'initialiser la chaîne de connexion requise en BDD
         public static void SetchaineConnexion(ConnectionStringSettings chset)
         {
             string chaine = chset.ConnectionString;
             ConnexionBDD.GetConnexion().SetchaineConnexion(chaine);
         }
 
+        //Référence à la couche DAL
         public static bool GetUtilisateur(Utilisateur uti) 
         {
             return ConnexionBDD.GetUtilisateur(uti);
