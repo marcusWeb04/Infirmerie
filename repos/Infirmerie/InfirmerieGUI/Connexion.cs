@@ -22,15 +22,19 @@ namespace InfirmerieGUI
             ConnexionBLL.SetchaineConnexion(ConfigurationManager.ConnectionStrings["Infirmerie"]);
         }
 
+        //Connexion
         private void buttonSeconnecter_Click_1(object sender, EventArgs e)
         {
+            //Création d'une instance Utilisateur qui sera utilisée en BLL puis DAL
             Utilisateur uti = new Utilisateur(textBoxIdentifiant.Text, textBoxMotdepasse.Text);
             if (ConnexionBLL.GetUtilisateur(uti))
             {
+                //Affiche du formulaire d'Accueil
                 this.Hide();
                 Accueil Accueil = new Accueil(uti);
                 Accueil.ShowDialog();
             } else {
+                //Erreur
                 MessageBox.Show("Identifiants invalides.");
             }
         }

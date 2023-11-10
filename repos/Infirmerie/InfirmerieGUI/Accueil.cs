@@ -18,6 +18,7 @@ namespace InfirmerieGUI
         public Accueil(Utilisateur uti)
         {
             InitializeComponent();
+            //Récupération du nom de l'utilisateur pour l'affichage
             labelBienvenue.Text = "Bienvenue, " + uti.login + " !";
         }
 
@@ -42,6 +43,7 @@ namespace InfirmerieGUI
 
         private void buttonDeconnexion_Click_1(object sender, EventArgs e)
         {
+            //Affiche du formulaire Connexion
             this.Hide();
             Connexion Connexion = new Connexion();
             Connexion.ShowDialog();
