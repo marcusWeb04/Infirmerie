@@ -28,7 +28,7 @@ namespace InfirmerieGUI
             if (ConnexionBLL.GetUtilisateur(uti))
             {
                 this.Hide();
-                Accueil Accueil = new Accueil();
+                Accueil Accueil = new Accueil(uti);
                 Accueil.ShowDialog();
             } else {
                 MessageBox.Show("Identifiants invalides.");

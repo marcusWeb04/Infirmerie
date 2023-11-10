@@ -15,9 +15,10 @@ namespace InfirmerieGUI
 {
     public partial class Accueil : Form
     {
-        public Accueil()
+        public Accueil(Utilisateur uti)
         {
             InitializeComponent();
+            labelBienvenue.Text = "Bienvenue, " + uti.login + " !";
         }
 
         private void Accueil_Load(object sender, EventArgs e)
