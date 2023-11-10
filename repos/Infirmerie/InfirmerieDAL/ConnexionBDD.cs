@@ -11,6 +11,7 @@ namespace InfirmerieDAL
         private static ConnexionBDD uneConnexion;
         private string chaineConnexion;
 
+        // Getter/setter de la chaîne de connexion à la BDD
         public string GetchaineConnexion()
         {
             return chaineConnexion;
@@ -21,6 +22,7 @@ namespace InfirmerieDAL
             chaineConnexion = ch;
         }
 
+        // Méthodes d'initialisation de la connexion à la BDD
         public static ConnexionBDD GetConnexion()
         {
             if (uneConnexion == null)
@@ -58,16 +60,22 @@ namespace InfirmerieDAL
             }
         }
 
+        // Méthode d'authentification
         public static bool GetUtilisateur(Utilisateur uti)
         {
-            SqlDataReader result;
+            //Connexion à la BDD
             SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
             SqlCommand cmd = new SqlCommand();
+            SqlDataReader result;
             cmd.Connection = maConnexion;
             cmd.CommandText =
                 "SELECT * FROM utilisateur WHERE utilisateur_login = @login AND utilisateur_mdp = @mdp ";
             cmd.Parameters.AddWithValue("@login", uti.login);
             cmd.Parameters.AddWithValue("@mdp", uti.mdp);
+            
+            //Exécution de la requête et récupération du résultat
             result = cmd.ExecuteReader();
             bool res = result.HasRows;
             maConnexion.Close();
