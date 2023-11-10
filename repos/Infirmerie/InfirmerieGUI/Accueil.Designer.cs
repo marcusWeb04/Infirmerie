@@ -65,6 +65,7 @@
             this.buttonEleves.TabIndex = 11;
             this.buttonEleves.Text = "Élèves";
             this.buttonEleves.UseVisualStyleBackColor = false;
+            this.buttonEleves.Click += new System.EventHandler(this.buttonEleves_Click);
             // 
             // buttonMedicaments
             // 
@@ -80,6 +81,7 @@
             this.buttonMedicaments.TabIndex = 10;
             this.buttonMedicaments.Text = "Médicaments";
             this.buttonMedicaments.UseVisualStyleBackColor = false;
+            this.buttonMedicaments.Click += new System.EventHandler(this.buttonMedicaments_Click);
             // 
             // buttonDeconnexion
             // 
@@ -95,6 +97,7 @@
             this.buttonDeconnexion.TabIndex = 9;
             this.buttonDeconnexion.Text = "Déconnexion";
             this.buttonDeconnexion.UseVisualStyleBackColor = false;
+            this.buttonDeconnexion.Click += new System.EventHandler(this.buttonDeconnexion_Click_1);
             // 
             // labelBienvenue
             // 

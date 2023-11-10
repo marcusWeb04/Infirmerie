@@ -9,16 +9,16 @@ namespace InfirmerieBO
     public class Utilisateur
     {
         //attribut
-        private string nom;
-        private string motDePasse;
+        private string utilisateur_login;
+        private string utilisateur_mdp;
 
-        public Utilisateur(string nom, string motDePasse)
+        public Utilisateur(string utilisateur_login, string utilisateur_mdp)
         {
-            this.nom = nom;
-            this.motDePasse = motDePasse;
+            this.utilisateur_login = utilisateur_login;
+            this.utilisateur_mdp = utilisateur_mdp;
         }
 
-        public string Nom { get => nom; set => nom = value; }
-        public string MotDePasse { get => motDePasse; set => motDePasse = value; }
+        public string login { get => utilisateur_login; set => utilisateur_login = value; }
+        public string mdp { get => utilisateur_mdp; set => utilisateur_mdp = value; }
     }
 }

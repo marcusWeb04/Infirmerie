@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -51,6 +52,11 @@
     </Compile>
     <Compile Include="Accueil.Designer.cs">
       <DependentUpon>Accueil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BD_UtilisateursDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD_UtilisateursDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Connexion.cs">
       <SubType>Form</SubType>
@@ -75,6 +81,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="BD_UtilisateursDataSet.xsc">
+      <DependentUpon>BD_UtilisateursDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BD_UtilisateursDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BD_UtilisateursDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BD_UtilisateursDataSet.xss">
+      <DependentUpon>BD_UtilisateursDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -97,6 +114,9 @@
       <Project>{3e028ddf-0907-49c8-bccd-02861da0df98}</Project>
       <Name>InfirmerieBO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,3 +14,5 @@ C:\Users\admin\source\repos\Infirmerie\InfirmerieGUI\obj\Debug\InfirmerieGUI.csp
 C:\Users\admin\source\repos\Infirmerie\InfirmerieGUI\obj\Debug\InfirmerieGUI.csproj.CopyComplete
 C:\Users\admin\source\repos\Infirmerie\InfirmerieGUI\obj\Debug\InfirmerieGUI.exe
 C:\Users\admin\source\repos\Infirmerie\InfirmerieGUI\obj\Debug\InfirmerieGUI.pdb
+C:\Users\admin\source\repos\Infirmerie\InfirmerieGUI\bin\Debug\InfirmerieDAL.dll
+C:\Users\admin\source\repos\Infirmerie\InfirmerieGUI\bin\Debug\InfirmerieDAL.pdb

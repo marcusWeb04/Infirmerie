@@ -7,3 +7,5 @@ C:\Users\admin\source\repos\Infirmerie\InfirmerieBLL\obj\Debug\InfirmerieBLL.csp
 C:\Users\admin\source\repos\Infirmerie\InfirmerieBLL\obj\Debug\InfirmerieBLL.csproj.CopyComplete
 C:\Users\admin\source\repos\Infirmerie\InfirmerieBLL\obj\Debug\InfirmerieBLL.dll
 C:\Users\admin\source\repos\Infirmerie\InfirmerieBLL\obj\Debug\InfirmerieBLL.pdb
+C:\Users\admin\source\repos\Infirmerie\InfirmerieBLL\bin\Debug\InfirmerieBO.dll
+C:\Users\admin\source\repos\Infirmerie\InfirmerieBLL\bin\Debug\InfirmerieBO.pdb

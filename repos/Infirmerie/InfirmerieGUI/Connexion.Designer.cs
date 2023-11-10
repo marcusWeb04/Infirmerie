@@ -40,7 +40,7 @@
             // textBoxMotdepasse
             // 
             this.textBoxMotdepasse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxMotdepasse.Font = new System.Drawing.Font("Arial", 16F);
+            this.textBoxMotdepasse.Font = new System.Drawing.Font("Arial", 24F);
             this.textBoxMotdepasse.Location = new System.Drawing.Point(550, 500);
             this.textBoxMotdepasse.MaxLength = 32;
             this.textBoxMotdepasse.Multiline = true;
@@ -75,7 +75,7 @@
             // textBoxIdentifiant
             // 
             this.textBoxIdentifiant.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxIdentifiant.Font = new System.Drawing.Font("Arial", 16F);
+            this.textBoxIdentifiant.Font = new System.Drawing.Font("Arial", 24F);
             this.textBoxIdentifiant.Location = new System.Drawing.Point(550, 356);
             this.textBoxIdentifiant.MaxLength = 32;
             this.textBoxIdentifiant.Multiline = true;
@@ -84,6 +84,7 @@
             this.textBoxIdentifiant.TabIndex = 12;
             this.textBoxIdentifiant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxIdentifiant.WordWrap = false;
+            this.textBoxIdentifiant.TextChanged += new System.EventHandler(this.textBoxIdentifiant_TextChanged);
             // 
             // labelConnexion
             // 

@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Configuration;
+using InfirmerieBO;
+using InfirmerieBLL;
+
 namespace InfirmerieGUI
 {
     public partial class Connexion : Form
@@ -15,13 +19,25 @@ namespace InfirmerieGUI
         public Connexion()
         {
             InitializeComponent();
+            ConnexionBLL.SetchaineConnexion(ConfigurationManager.ConnectionStrings["Infirmerie"]);
         }
 
         private void buttonSeconnecter_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
-            Accueil Accueil = new Accueil();
-            Accueil.ShowDialog();
+            Utilisateur uti = new Utilisateur(textBoxIdentifiant.Text, textBoxMotdepasse.Text);
+            if (ConnexionBLL.GetUtilisateur(uti))
+            {
+                this.Hide();
+                Accueil Accueil = new Accueil();
+                Accueil.ShowDialog();
+            } else {
+                MessageBox.Show("Identifiants invalides.");
+            }
+        }
+
+        private void textBoxIdentifiant_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

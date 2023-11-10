@@ -26,6 +26,21 @@ namespace InfirmerieGUI
         }
         private void buttonDeconnexion_Click(object sender, EventArgs e)
         {
+          
+        }
+
+        private void buttonEleves_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonMedicaments_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDeconnexion_Click_1(object sender, EventArgs e)
+        {
             this.Hide();
             Connexion Connexion = new Connexion();
             Connexion.ShowDialog();
