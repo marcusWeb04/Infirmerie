@@ -74,13 +74,51 @@ namespace InfirmerieDAL
                 "SELECT * FROM utilisateur WHERE utilisateur_login = @login AND utilisateur_mdp = @mdp ";
             cmd.Parameters.AddWithValue("@login", uti.login);
             cmd.Parameters.AddWithValue("@mdp", uti.mdp);
-            
+
             //Exécution de la requête et récupération du résultat
             result = cmd.ExecuteReader();
             bool res = result.HasRows;
             maConnexion.Close();
 
             return (res);
+        }
+        public static bool addEleve(Eleve eleve)
+        {
+            //Connexion à la BDD
+            int res;
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "INSERT INTO eleve (eleve_nom, eleve_prenom, eleve_naiss, eleve_port, eleve_parent_port, eleve_classe, eleve_tiers_temps, eleve_comm_sante)" +
+                "VALUES (@nom, @prenom, @naiss, @port, @parent_port, @classe, @tiers_temps, @comm_sante)";
+            cmd.Parameters.AddWithValue("@nom", eleve.nom);
+            cmd.Parameters.AddWithValue("@prenom", eleve.prenom);
+            cmd.Parameters.AddWithValue("@naiss", eleve.naiss);
+            cmd.Parameters.AddWithValue("@port", eleve.port);
+            cmd.Parameters.AddWithValue("@parent_port", eleve.parent_port);
+            cmd.Parameters.AddWithValue("@classe", eleve.classe);
+            cmd.Parameters.AddWithValue("@tiers_temps", eleve.tiers_temps);
+
+            // Cas spécial : insertion d'un null en BDD
+            if (eleve.comm_sante == null)
+            {
+                cmd.Parameters.AddWithValue("@comm_sante", DBNull.Value);
+            } else
+            {
+                cmd.Parameters.AddWithValue("@comm_sante", eleve.comm_sante);
+            }
+
+            //Execution de la requête
+            res = cmd.ExecuteNonQuery();
+
+            if (res == 1)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using InfirmerieDAL;
 using InfirmerieBO;
--
+
 namespace InfirmerieBLL
 {
     public class ConnexionBLL
@@ -34,6 +34,10 @@ namespace InfirmerieBLL
         public static bool GetUtilisateur(Utilisateur uti) 
         {
             return ConnexionBDD.GetUtilisateur(uti);
+        }
+        public static bool addEleve(Eleve el)
+        {
+            return ConnexionBDD.addEleve(el);
         }
     }
 }
