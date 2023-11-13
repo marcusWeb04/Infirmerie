@@ -120,5 +120,28 @@ namespace InfirmerieDAL
             }
             return false;
         }
+        public static bool deleteEleve(Eleve eleve)
+        {
+            //Connexion à la BDD
+            int res;
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "DELETE FROM eleve " +
+                "WHERE eleve_id = @id";
+            cmd.Parameters.AddWithValue("@id", eleve.id);
+
+            //Execution de la requête
+            res = cmd.ExecuteNonQuery();
+
+            if (res == 1)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

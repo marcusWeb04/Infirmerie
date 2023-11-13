@@ -39,5 +39,9 @@ namespace InfirmerieBLL
         {
             return ConnexionBDD.addEleve(el);
         }
+        public static bool deleteEleve(Eleve el)
+        {
+            return ConnexionBDD.deleteEleve(el);
+        }
     }
 }
