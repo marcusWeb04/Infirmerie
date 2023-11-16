@@ -229,5 +229,30 @@ namespace InfirmerieDAL
             }
             return res;
         }
-    }
+        public static List<Classe> getClasses()
+        {
+            //Connexion à la BDD
+            List<Classe> res = new List<Classe>();
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "SELECT * " +
+                "FROM classe";
+
+            //Execution de la requête
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                //Création d'un objet Classe et ajout de l'objet dans la liste de retour
+                int id = Int32.Parse(reader["classe_id"].ToString());
+                string nom = reader["classe_lib"].ToString();
+
+                Classe temp = new Classe(id, nom);
+                res.Add(temp);
+            }
+            return res;
+        }
 }
