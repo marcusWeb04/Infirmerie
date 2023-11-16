@@ -132,6 +132,7 @@
             this.Controls.Add(this.labelBienvenue);
             this.Controls.Add(this.panel1);
             this.Name = "Accueil";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Accueil";
             this.Load += new System.EventHandler(this.Accueil_Load);
             this.ResumeLayout(false);

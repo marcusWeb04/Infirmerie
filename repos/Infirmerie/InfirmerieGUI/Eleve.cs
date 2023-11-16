@@ -27,10 +27,21 @@ namespace InfirmerieGUI
 
         private void buttonRetour_Click(object sender, EventArgs e)
         {
-            //Affiche du formulaire d'Accueil
+            //Affichage du formulaire d'Accueil
             this.Hide();
             Accueil Accueil = new Accueil();
             Accueil.ShowDialog();
+        }
+        private void buttonAjouter_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void buttonAjouter_Click_1(object sender, EventArgs e)
+        {
+            //Affichage du formulaire d'ajout
+            this.Hide();
+            Ajout_Eleve aj = new Ajout_Eleve();
+            aj.ShowDialog();
         }
     }
 }

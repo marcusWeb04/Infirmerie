@@ -60,6 +60,7 @@
             this.buttonAjouter.TabIndex = 12;
             this.buttonAjouter.Text = "Ajouter";
             this.buttonAjouter.UseVisualStyleBackColor = false;
+            this.buttonAjouter.Click += new System.EventHandler(this.buttonAjouter_Click_1);
             // 
             // buttonRetour
             // 
@@ -146,6 +147,7 @@
             this.Controls.Add(this.labelBienvenue);
             this.Controls.Add(this.panel2);
             this.Name = "Eleve";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Eleve";
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);

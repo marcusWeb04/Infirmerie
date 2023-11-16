@@ -135,6 +135,7 @@
             this.Controls.Add(this.buttonSeconnecter);
             this.Controls.Add(this.panel1);
             this.Name = "Connexion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();

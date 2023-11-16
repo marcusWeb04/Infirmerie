@@ -326,6 +326,7 @@
             this.Controls.Add(this.labelBienvenue);
             this.Controls.Add(this.panel1);
             this.Name = "Ajout_Eleve";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Ajout_Eleve_Load);
             this.ResumeLayout(false);

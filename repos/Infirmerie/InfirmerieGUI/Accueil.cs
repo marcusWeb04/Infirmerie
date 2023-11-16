@@ -21,6 +21,11 @@ namespace InfirmerieGUI
             //Récupération du nom de l'utilisateur pour l'affichage
             labelBienvenue.Text = "Bienvenue, " + uti.login + " !";
         }
+        public Accueil()
+        {
+            InitializeComponent();
+            labelBienvenue.Text = "Accueil";
+        }
 
         private void Accueil_Load(object sender, EventArgs e)
         {
@@ -33,7 +38,9 @@ namespace InfirmerieGUI
 
         private void buttonEleves_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Eleve Eleve = new Eleve();
+            Eleve.Show();
         }
 
         private void buttonMedicaments_Click(object sender, EventArgs e)
