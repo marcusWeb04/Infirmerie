@@ -1,0 +1,27 @@
+C:\Users\admin\source\repos\Infirmerie\InfirmerieDAL\bin\Debug\InfirmerieDAL.dll
+C:\Users\admin\source\repos\Infirmerie\InfirmerieDAL\bin\Debug\InfirmerieDAL.pdb
+C:\Users\admin\source\repos\Infirmerie\InfirmerieDAL\bin\Debug\InfirmerieBO.dll
+C:\Users\admin\source\repos\Infirmerie\InfirmerieDAL\bin\Debug\InfirmerieBO.pdb
+C:\Users\admin\source\repos\Infirmerie\InfirmerieDAL\obj\Debug\InfirmerieDAL.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\Infirmerie\InfirmerieDAL\obj\Debug\InfirmerieDAL.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\Infirmerie\InfirmerieDAL\obj\Debug\InfirmerieDAL.csproj.CopyComplete
+C:\Users\admin\source\repos\Infirmerie\InfirmerieDAL\obj\Debug\InfirmerieDAL.dll
+C:\Users\admin\source\repos\Infirmerie\InfirmerieDAL\obj\Debug\InfirmerieDAL.pdb
+C:\Users\admin\Downloads\Nouveau dossier\InfirmerieDAL\bin\Debug\InfirmerieDAL.dll
+C:\Users\admin\Downloads\Nouveau dossier\InfirmerieDAL\bin\Debug\InfirmerieDAL.pdb
+C:\Users\admin\Downloads\Nouveau dossier\InfirmerieDAL\bin\Debug\InfirmerieBO.dll
+C:\Users\admin\Downloads\Nouveau dossier\InfirmerieDAL\bin\Debug\InfirmerieBO.pdb
+C:\Users\admin\Downloads\Nouveau dossier\InfirmerieDAL\obj\Debug\InfirmerieDAL.csprojAssemblyReference.cache
+C:\Users\admin\Downloads\Nouveau dossier\InfirmerieDAL\obj\Debug\InfirmerieDAL.csproj.CoreCompileInputs.cache
+C:\Users\admin\Downloads\Nouveau dossier\InfirmerieDAL\obj\Debug\InfirmerieDAL.csproj.CopyComplete
+C:\Users\admin\Downloads\Nouveau dossier\InfirmerieDAL\obj\Debug\InfirmerieDAL.dll
+C:\Users\admin\Downloads\Nouveau dossier\InfirmerieDAL\obj\Debug\InfirmerieDAL.pdb
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieDAL\bin\Debug\InfirmerieDAL.dll
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieDAL\bin\Debug\InfirmerieDAL.pdb
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieDAL\bin\Debug\InfirmerieBO.dll
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieDAL\bin\Debug\InfirmerieBO.pdb
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieDAL\obj\Debug\InfirmerieDAL.csprojAssemblyReference.cache
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieDAL\obj\Debug\InfirmerieDAL.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieDAL\obj\Debug\InfirmerieDAL.csproj.CopyComplete
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieDAL\obj\Debug\InfirmerieDAL.dll
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieDAL\obj\Debug\InfirmerieDAL.pdb
