@@ -21,7 +21,7 @@ namespace InfirmerieGUI
 
         private void buttonRetour_Click(object sender, EventArgs e)
         {
-            //Affiche du formulaire Connexion
+            //Affiche du formulaire Élève
             this.Hide();
             Eleve Eleve = new Eleve();
             Eleve.ShowDialog();
@@ -43,9 +43,19 @@ namespace InfirmerieGUI
             string commSante = textBoxComSante.Text;
 
             //On crée notre objet élève
-            Eleve eleve = new Eleve(id, nom, prenom, dateDeNaissance, telEleve, telParent, classe, tiersTemps, commSante);
+            InfirmerieBO.Eleve el = new InfirmerieBO.Eleve(id, nom, prenom, dateDeNaissance, telEleve, telParent, classe, tiersTemps, commSante);
 
-            ConnexionBLL.addEleve(eleve);
+            ConnexionBLL.addEleve(el);
+
+        }
+
+        private void Ajout_Eleve_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelBienvenue_Click(object sender, EventArgs e)
+        {
 
         }
     }

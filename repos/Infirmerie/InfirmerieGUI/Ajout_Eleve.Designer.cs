@@ -47,6 +47,7 @@
             this.checkBoxTiersTemps = new System.Windows.Forms.CheckBox();
             this.buttonRetour = new System.Windows.Forms.Button();
             this.buttonDummyAdd = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // labelBienvenue
@@ -54,12 +55,13 @@
             this.labelBienvenue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.labelBienvenue.Font = new System.Drawing.Font("Arial", 31.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBienvenue.ForeColor = System.Drawing.Color.Black;
-            this.labelBienvenue.Location = new System.Drawing.Point(576, 150);
+            this.labelBienvenue.Location = new System.Drawing.Point(526, 150);
             this.labelBienvenue.Name = "labelBienvenue";
-            this.labelBienvenue.Size = new System.Drawing.Size(288, 58);
+            this.labelBienvenue.Size = new System.Drawing.Size(388, 58);
             this.labelBienvenue.TabIndex = 9;
-            this.labelBienvenue.Text = "Ajout eleve";
+            this.labelBienvenue.Text = "Ajout d\'élève";
             this.labelBienvenue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelBienvenue.Click += new System.EventHandler(this.labelBienvenue_Click);
             // 
             // textBoxPrenom
             // 
@@ -209,7 +211,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(277, 58);
             this.label5.TabIndex = 24;
-            this.label5.Text = "Commentaire santé";
+            this.label5.Text = "Commentaire santé :";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
@@ -264,7 +266,7 @@
             this.buttonRetour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRetour.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRetour.ForeColor = System.Drawing.Color.White;
-            this.buttonRetour.Location = new System.Drawing.Point(102, 851);
+            this.buttonRetour.Location = new System.Drawing.Point(94, 728);
             this.buttonRetour.Margin = new System.Windows.Forms.Padding(0);
             this.buttonRetour.Name = "buttonRetour";
             this.buttonRetour.Size = new System.Drawing.Size(310, 80);
@@ -280,7 +282,7 @@
             this.buttonDummyAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDummyAdd.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDummyAdd.ForeColor = System.Drawing.Color.White;
-            this.buttonDummyAdd.Location = new System.Drawing.Point(1027, 851);
+            this.buttonDummyAdd.Location = new System.Drawing.Point(1018, 727);
             this.buttonDummyAdd.Margin = new System.Windows.Forms.Padding(0);
             this.buttonDummyAdd.Name = "buttonDummyAdd";
             this.buttonDummyAdd.Size = new System.Drawing.Size(310, 80);
@@ -289,11 +291,20 @@
             this.buttonDummyAdd.UseVisualStyleBackColor = false;
             this.buttonDummyAdd.Click += new System.EventHandler(this.buttonDummyAdd_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.panel1.Enabled = false;
+            this.panel1.Location = new System.Drawing.Point(94, 69);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1235, 739);
+            this.panel1.TabIndex = 31;
+            // 
             // Ajout_Eleve
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1422, 977);
+            this.ClientSize = new System.Drawing.Size(1422, 877);
             this.Controls.Add(this.buttonDummyAdd);
             this.Controls.Add(this.buttonRetour);
             this.Controls.Add(this.checkBoxTiersTemps);
@@ -313,8 +324,10 @@
             this.Controls.Add(this.textBoxPrenom);
             this.Controls.Add(this.textBoxNom);
             this.Controls.Add(this.labelBienvenue);
+            this.Controls.Add(this.panel1);
             this.Name = "Ajout_Eleve";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Ajout_Eleve_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,5 +354,6 @@
         private System.Windows.Forms.CheckBox checkBoxTiersTemps;
         private System.Windows.Forms.Button buttonRetour;
         private System.Windows.Forms.Button buttonDummyAdd;
+        private System.Windows.Forms.Panel panel1;
     }
 }
