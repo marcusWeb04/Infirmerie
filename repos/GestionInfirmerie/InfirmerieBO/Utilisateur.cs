@@ -8,17 +8,19 @@ namespace InfirmerieBO
 {
     public class Utilisateur
     {
-        //variable
-        string nom;
-        string mot_de_passe;
+        // Attributs
+        private string utilisateur_login;
+        private string utilisateur_mdp;
 
-        public Utilisateur(string nom, string mot_de_passe)
+        // Constructeur
+        public Utilisateur(string utilisateur_login, string utilisateur_mdp)
         {
-            this.Nom = nom;
-            this.Mot_de_passe = mot_de_passe;
+            this.utilisateur_login = utilisateur_login;
+            this.utilisateur_mdp = utilisateur_mdp;
         }
 
-        public string Nom { get => nom; set => nom = value; }
-        public string Mot_de_passe { get => mot_de_passe; set => mot_de_passe = value; }
+        // Getter/Setters
+        public string login { get => utilisateur_login; set => utilisateur_login = value; }
+        public string mdp { get => utilisateur_mdp; set => utilisateur_mdp = value; }
     }
 }
