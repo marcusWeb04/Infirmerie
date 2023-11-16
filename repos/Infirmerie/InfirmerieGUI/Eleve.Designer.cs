@@ -75,6 +75,7 @@
             this.buttonRetour.TabIndex = 13;
             this.buttonRetour.Text = "Retour";
             this.buttonRetour.UseVisualStyleBackColor = false;
+            this.buttonRetour.Click += new System.EventHandler(this.buttonRetour_Click);
             // 
             // buttonRechercher
             // 
@@ -117,9 +118,9 @@
             this.labelBienvenue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.labelBienvenue.Font = new System.Drawing.Font("Arial", 31.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBienvenue.ForeColor = System.Drawing.Color.Black;
-            this.labelBienvenue.Location = new System.Drawing.Point(88, 115);
+            this.labelBienvenue.Location = new System.Drawing.Point(97, 115);
             this.labelBienvenue.Name = "labelBienvenue";
-            this.labelBienvenue.Size = new System.Drawing.Size(1238, 58);
+            this.labelBienvenue.Size = new System.Drawing.Size(1229, 58);
             this.labelBienvenue.TabIndex = 9;
             this.labelBienvenue.Text = "Élèves";
             this.labelBienvenue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
