@@ -317,6 +317,7 @@
             this.buttonDelete.TabIndex = 64;
             this.buttonDelete.Text = "Supprimer";
             this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // textBoxId
             // 

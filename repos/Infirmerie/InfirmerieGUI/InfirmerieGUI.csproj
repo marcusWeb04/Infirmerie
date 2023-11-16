@@ -82,6 +82,12 @@
     <Compile Include="Modif_Eleve.Designer.cs">
       <DependentUpon>Modif_Eleve.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modif_Eleve_Modale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modif_Eleve_Modale.Designer.cs">
+      <DependentUpon>Modif_Eleve_Modale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Accueil.resx">
@@ -98,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modif_Eleve.resx">
       <DependentUpon>Modif_Eleve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modif_Eleve_Modale.resx">
+      <DependentUpon>Modif_Eleve_Modale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -15,6 +15,9 @@ namespace InfirmerieGUI
 {
     public partial class Modif_Eleve : Form
     {
+        private static InfirmerieBO.Eleve eleve;
+        public InfirmerieBO.Eleve global_el { get => eleve; set => eleve = value; }
+
         public Modif_Eleve(InfirmerieBO.Eleve el)
         {
             InitializeComponent();
@@ -30,7 +33,7 @@ namespace InfirmerieGUI
             textBoxDateDeNaissance.Text = el.naiss;
             checkBoxTiersTemps.Checked = el.tiers_temps;
 
-            textBoxId.Text = el.id.ToString();
+            global_el = el;
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)
@@ -53,15 +56,13 @@ namespace InfirmerieGUI
             int classe;
             int teleleve;
             int telparent;
-            int id;
             string value = textBoxClasse.Text;
             int.TryParse(value, out classe);
             value = textBoxTelEleve.Text;
             int.TryParse(value, out teleleve);
             value = textBoxTelParent.Text;
             int.TryParse(value, out telparent);
-            value = textBoxId.Text;
-            int.TryParse(value, out id);
+
 
             //Vérifications
             if (nom == "" || prenom == "" || classe == 0 || dateDeNaissance == "" || teleleve == 0 || telparent == 0)
@@ -71,7 +72,7 @@ namespace InfirmerieGUI
             else
             {
                 //On modifie l'objet élève
-                InfirmerieBO.Eleve el = new InfirmerieBO.Eleve(id, nom, prenom, dateDeNaissance, teleleve, telparent, classe, tiersTemps, commSante);
+                InfirmerieBO.Eleve el = new InfirmerieBO.Eleve(global_el.id, nom, prenom, dateDeNaissance, teleleve, telparent, classe, tiersTemps, commSante);
                 if (ConnexionBLL.editEleve(el))
                 {
                     MessageBox.Show("Élève modifié!");
@@ -107,6 +108,12 @@ namespace InfirmerieGUI
         private void textBoxId_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            Modif_Eleve_Modale mod = new Modif_Eleve_Modale(global_el, this);
+            mod.Show();
         }
     }
 }
