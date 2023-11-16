@@ -64,18 +64,6 @@
     <Compile Include="Connexion.Designer.cs">
       <DependentUpon>Connexion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Eleve.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Eleve.Designer.cs">
-      <DependentUpon>Eleve.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ListeEleve.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ListeEleve.Designer.cs">
-      <DependentUpon>ListeEleve.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Accueil.resx">
@@ -83,12 +71,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Connexion.resx">
       <DependentUpon>Connexion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Eleve.resx">
-      <DependentUpon>Eleve.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ListeEleve.resx">
-      <DependentUpon>ListeEleve.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
