@@ -115,6 +115,7 @@ namespace InfirmerieDAL
 
             //Execution de la requête
             res = cmd.ExecuteNonQuery();
+            maConnexion.Close();
 
             if (res == 1)
             {
@@ -138,6 +139,7 @@ namespace InfirmerieDAL
 
             //Execution de la requête
             res = cmd.ExecuteNonQuery();
+            maConnexion.Close();
 
             if (res == 1)
             {
@@ -184,6 +186,7 @@ namespace InfirmerieDAL
 
             //Execution de la requête
             res = cmd.ExecuteNonQuery();
+            maConnexion.Close();
 
             if (res == 1)
             {
@@ -228,6 +231,7 @@ namespace InfirmerieDAL
                 Eleve temp = new Eleve(id, nom, prenom, naiss, port, parent_port, classe, tiers_temps, comm_sante);
                 res.Add(temp);
             }
+            maConnexion.Close();
             return res;
         }
         public static List<Classe> getClasses()
@@ -254,6 +258,7 @@ namespace InfirmerieDAL
                 Classe temp = new Classe(id, nom);
                 res.Add(temp);
             }
+            maConnexion.Close();
             return res;
         }
     }
