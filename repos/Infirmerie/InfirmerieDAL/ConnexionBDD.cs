@@ -204,7 +204,7 @@ namespace InfirmerieDAL
                 "SELECT * FROM eleve " +
                 "WHERE eleve_prenom LIKE @cond " +
                 "OR eleve_nom LIKE @cond";
-            cmd.Parameters.AddWithValue("@cond", "%"+condition+"%");
+            cmd.Parameters.AddWithValue("@cond", "%" + condition + "%");
 
             //Execution de la requête
             SqlDataReader reader = cmd.ExecuteReader();
@@ -219,12 +219,13 @@ namespace InfirmerieDAL
                 int parent_port = Int32.Parse(reader["eleve_parent_port"].ToString());
                 int classe = Int32.Parse(reader["eleve_classe"].ToString());
                 bool tiers_temps = false;
-                if (reader["eleve_classe"].ToString() == "1") {
+                if (reader["eleve_classe"].ToString() == "1")
+                {
                     tiers_temps = true;
                 }
                 string comm_sante = reader["eleve_comm_sante"].ToString();
 
-                Eleve temp = new Eleve(id,nom,prenom,naiss,port,parent_port,classe,tiers_temps,comm_sante);
+                Eleve temp = new Eleve(id, nom, prenom, naiss, port, parent_port, classe, tiers_temps, comm_sante);
                 res.Add(temp);
             }
             return res;
@@ -255,4 +256,5 @@ namespace InfirmerieDAL
             }
             return res;
         }
+    }
 }

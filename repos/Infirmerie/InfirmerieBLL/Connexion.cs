@@ -51,5 +51,9 @@ namespace InfirmerieBLL
         {
             return ConnexionBDD.getEleves(condition);
         }
+        public static List<Classe> getClasses()
+        {
+            return ConnexionBDD.getClasses();
+        }
     }
 }
