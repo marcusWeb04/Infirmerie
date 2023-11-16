@@ -4,3 +4,9 @@ C:\Users\admin\source\repos\Infirmerie\InfirmerieBO\obj\Debug\InfirmerieBO.cspro
 C:\Users\admin\source\repos\Infirmerie\InfirmerieBO\obj\Debug\InfirmerieBO.dll
 C:\Users\admin\source\repos\Infirmerie\InfirmerieBO\obj\Debug\InfirmerieBO.pdb
 C:\Users\admin\source\repos\Infirmerie\InfirmerieBO\obj\Debug\InfirmerieBO.csprojAssemblyReference.cache
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBO\bin\Debug\InfirmerieBO.dll
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBO\bin\Debug\InfirmerieBO.pdb
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBO\obj\Debug\InfirmerieBO.csprojAssemblyReference.cache
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBO\obj\Debug\InfirmerieBO.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBO\obj\Debug\InfirmerieBO.dll
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBO\obj\Debug\InfirmerieBO.pdb
