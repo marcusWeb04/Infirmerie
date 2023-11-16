@@ -17,8 +17,8 @@ namespace InfirmerieBO
             this.classe_lib = classe_lib;
         }
 
-        public int Classe_id { get => classe_id; set => classe_id = value; }
-        public string Classe_lib { get => classe_lib; set => classe_lib = value; }
+        public int id { get => classe_id; set => classe_id = value; }
+        public string lib { get => classe_lib; set => classe_lib = value; }
 
     }
 }
