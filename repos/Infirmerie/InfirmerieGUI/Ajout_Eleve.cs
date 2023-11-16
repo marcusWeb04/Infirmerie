@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace InfirmerieGUI
         public Ajout_Eleve()
         {
             InitializeComponent();
+            ConnexionBLL.SetchaineConnexion(ConfigurationManager.ConnectionStrings["Infirmerie"]);
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)
@@ -29,23 +31,42 @@ namespace InfirmerieGUI
 
         private void buttonDummyAdd_Click(object sender, EventArgs e)
         {
-            int id = -727;
+            //Récupération des valeurs saisies
+            int id = 0;
             string nom = textBoxNom.Text;
             string prenom = textBoxPrenom.Text;
-            string value = textBoxClasse.Text;
-            int.TryParse(value, out int classe);
             string dateDeNaissance = textBoxDateDeNaissance.Text;
-            value = textBoxTelEleve.Text;
-            int.TryParse(value, out int telEleve);
-            value = textBoxTelParent.Text;
-            int.TryParse(value, out int telParent);
-            bool tiersTemps = checkBoxTiersTemps.Checked;//permet de savoir l'état d'une checked box
+            bool tiersTemps = checkBoxTiersTemps.Checked;
             string commSante = textBoxComSante.Text;
 
-            //On crée notre objet élève
-            InfirmerieBO.Eleve el = new InfirmerieBO.Eleve(id, nom, prenom, dateDeNaissance, telEleve, telParent, classe, tiersTemps, commSante);
+            int classe;
+            int teleleve;
+            int telparent;
+            string value = textBoxClasse.Text; 
+            int.TryParse(value, out classe);
+            value = textBoxTelEleve.Text;
+            int.TryParse(value, out teleleve);
+            value = textBoxTelParent.Text;
+            int.TryParse(value, out telparent);
 
-            ConnexionBLL.addEleve(el);
+            //Vérifications
+            if (nom == "" || prenom == "" || classe == 0 || dateDeNaissance == "" || teleleve == 0 || telparent == 0)
+            {
+                MessageBox.Show("Veuillez rentrer toutes les informations obligatoires.");
+            }
+            else
+            {   
+                //On crée un objet élève
+                InfirmerieBO.Eleve el = new InfirmerieBO.Eleve(id, nom, prenom, dateDeNaissance, teleleve, telparent, classe, tiersTemps, commSante);
+                if (ConnexionBLL.addEleve(el))
+                {
+                    MessageBox.Show("Élève ajouté!");
+                }
+                else
+                {
+                    MessageBox.Show("Une erreur est survenue.");
+                }
+            }
 
         }
 
@@ -55,6 +76,11 @@ namespace InfirmerieGUI
         }
 
         private void labelBienvenue_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
         {
 
         }
