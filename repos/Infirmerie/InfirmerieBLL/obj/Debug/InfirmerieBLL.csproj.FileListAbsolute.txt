@@ -9,3 +9,14 @@ C:\Users\admin\source\repos\Infirmerie\InfirmerieBLL\obj\Debug\InfirmerieBLL.dll
 C:\Users\admin\source\repos\Infirmerie\InfirmerieBLL\obj\Debug\InfirmerieBLL.pdb
 C:\Users\admin\source\repos\Infirmerie\InfirmerieBLL\bin\Debug\InfirmerieBO.dll
 C:\Users\admin\source\repos\Infirmerie\InfirmerieBLL\bin\Debug\InfirmerieBO.pdb
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBLL\bin\Debug\InfirmerieBLL.dll
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBLL\bin\Debug\InfirmerieBLL.pdb
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBLL\bin\Debug\InfirmerieBO.dll
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBLL\bin\Debug\InfirmerieDAL.dll
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBLL\bin\Debug\InfirmerieBO.pdb
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBLL\bin\Debug\InfirmerieDAL.pdb
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBLL\obj\Debug\InfirmerieBLL.csprojAssemblyReference.cache
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBLL\obj\Debug\InfirmerieBLL.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBLL\obj\Debug\InfirmerieBLL.csproj.CopyComplete
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBLL\obj\Debug\InfirmerieBLL.dll
+C:\Users\admin\Desktop\BTS 2\c#\projet c#\GetionInfirmerie\InfirmerieBLL\obj\Debug\InfirmerieBLL.pdb
