@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
-
+using System.Diagnostics;
 using InfirmerieBO;
 
 namespace InfirmerieDAL
@@ -106,50 +107,6 @@ namespace InfirmerieDAL
             if (eleve.comm_sante == null)
             {
                 cmd.Parameters.AddWithValue("@comm_sante", DBNull.Value);
-            } else
-            {
-                cmd.Parameters.AddWithValue("@comm_sante", eleve.comm_sante);
-            }
-
-            //Execution de la requête
-            res = cmd.ExecuteNonQuery();
-
-            if (res == 1)
-            {
-                return true;
-            }
-            return false;
-        }
-        public static bool editEleve(Eleve eleve)
-        {
-            int res;
-            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
-
-            //Création de la requête
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = maConnexion;
-            cmd.CommandText =
-                "UPDATE eleve SET [eleve_nom] = @nom," +
-                "[eleve_prenom] = @prenom," +
-                "[eleve_naiss] = @naiss," +
-                "[eleve_port] = @port," +
-                "[eleve_classe] = @classe," +
-                "[eleve_tier_temps] = @tiers_temps," +
-                "[eleve_comm_sante] = @comm_sante " +
-                "WHERE [eleve_id] = @id";
-            cmd.Parameters.AddWithValue("@id", eleve.id);
-            cmd.Parameters.AddWithValue("@nom", eleve.nom);
-            cmd.Parameters.AddWithValue("@prenom", eleve.prenom);
-            cmd.Parameters.AddWithValue("@naiss", eleve.naiss);
-            cmd.Parameters.AddWithValue("@port", eleve.port);
-            cmd.Parameters.AddWithValue("@parent_port", eleve.parent_port);
-            cmd.Parameters.AddWithValue("@classe", eleve.classe);
-            cmd.Parameters.AddWithValue("@tiers_temps", eleve.tiers_temps);
-
-            // Cas spécial : insertion d'un null en BDD
-            if (eleve.comm_sante == null)
-            {
-                cmd.Parameters.AddWithValue("@comm_sante", DBNull.Value);
             }
             else
             {
@@ -187,6 +144,90 @@ namespace InfirmerieDAL
                 return true;
             }
             return false;
+        }
+        public static bool editEleve(Eleve eleve)
+        {
+            int res;
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "UPDATE eleve SET [eleve_nom] = @nom," +
+                "[eleve_prenom] = @prenom," +
+                "[eleve_naiss] = @naiss," +
+                "[eleve_port] = @port," +
+                "[eleve_parent_port] = @parent_port," +
+                "[eleve_classe] = @classe," +
+                "[eleve_tiers_temps] = @tiers_temps," +
+                "[eleve_comm_sante] = @comm_sante " +
+                "WHERE [eleve_id] = @id";
+            cmd.Parameters.AddWithValue("@id", eleve.id);
+            cmd.Parameters.AddWithValue("@nom", eleve.nom);
+            cmd.Parameters.AddWithValue("@prenom", eleve.prenom);
+            cmd.Parameters.AddWithValue("@naiss", eleve.naiss);
+            cmd.Parameters.AddWithValue("@port", eleve.port);
+            cmd.Parameters.AddWithValue("@parent_port", eleve.parent_port);
+            cmd.Parameters.AddWithValue("@classe", eleve.classe);
+            cmd.Parameters.AddWithValue("@tiers_temps", eleve.tiers_temps);
+
+            // Cas spécial : insertion d'un null en BDD
+            if (eleve.comm_sante == null)
+            {
+                cmd.Parameters.AddWithValue("@comm_sante", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@comm_sante", eleve.comm_sante);
+            }
+
+            //Execution de la requête
+            res = cmd.ExecuteNonQuery();
+
+            if (res == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static List<Eleve> getEleves(string condition)
+        {
+            //Connexion à la BDD
+            List<Eleve> res = new List<Eleve>();
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "SELECT * FROM eleve " +
+                "WHERE eleve_prenom LIKE @cond " +
+                "OR eleve_nom LIKE @cond";
+            cmd.Parameters.AddWithValue("@cond", "%"+condition+"%");
+
+            //Execution de la requête
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                //Création d'un objet Eleve et ajout de l'objet dans la liste de retour
+                int id = Int32.Parse(reader["eleve_id"].ToString());
+                string nom = reader["eleve_nom"].ToString();
+                string prenom = reader["eleve_prenom"].ToString();
+                string naiss = reader["eleve_naiss"].ToString();
+                int port = Int32.Parse(reader["eleve_port"].ToString());
+                int parent_port = Int32.Parse(reader["eleve_parent_port"].ToString());
+                int classe = Int32.Parse(reader["eleve_classe"].ToString());
+                bool tiers_temps = false;
+                if (reader["eleve_classe"].ToString() == "1") {
+                    tiers_temps = true;
+                }
+                string comm_sante = reader["eleve_comm_sante"].ToString();
+
+                Eleve temp = new Eleve(id,nom,prenom,naiss,port,parent_port,classe,tiers_temps,comm_sante);
+                res.Add(temp);
+            }
+            return res;
         }
     }
 }
