@@ -45,7 +45,7 @@ namespace InfirmerieGUI
             {
                 MessageBox.Show("Élève supprimé.");
                 Eleve eleve = new Eleve();
-                eleve.Show();
+                eleve.ShowDialog();
                 global_modif.Close();
             }
             else
