@@ -22,7 +22,10 @@ namespace InfirmerieGUI
 
         private void buttonRechercher_Click(object sender, EventArgs e)
         {
-
+            //Affichage du formulaire d'Accueil
+            this.Hide();
+            ListeEleve ListeEleve = new ListeEleve();
+            ListeEleve.ShowDialog();
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)
