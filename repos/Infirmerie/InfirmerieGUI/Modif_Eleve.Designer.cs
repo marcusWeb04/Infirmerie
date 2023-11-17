@@ -200,6 +200,7 @@
             this.buttonRetour.TabIndex = 52;
             this.buttonRetour.Text = "Retour";
             this.buttonRetour.UseVisualStyleBackColor = false;
+            this.buttonRetour.Click += new System.EventHandler(this.buttonRetour_Click_1);
             // 
             // textBoxComSante
             // 

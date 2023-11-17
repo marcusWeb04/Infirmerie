@@ -38,10 +38,6 @@ namespace InfirmerieGUI
 
         private void buttonRetour_Click(object sender, EventArgs e)
         {
-            //Affichage du formulaire Élève
-            this.Hide();
-            Eleve Eleve = new Eleve();
-            Eleve.ShowDialog();
         }
 
         private void buttonDummyAdd_Click_1(object sender, EventArgs e)
@@ -114,6 +110,14 @@ namespace InfirmerieGUI
         {
             Modif_Eleve_Modale mod = new Modif_Eleve_Modale(global_el, this);
             mod.Show();
+        }
+
+        private void buttonRetour_Click_1(object sender, EventArgs e)
+        {
+            //Affichage du formulaire Élève
+            this.Hide();
+            Eleve Eleve = new Eleve();
+            Eleve.ShowDialog();
         }
     }
 }
