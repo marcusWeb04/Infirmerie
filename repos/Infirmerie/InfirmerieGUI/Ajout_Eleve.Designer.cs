@@ -30,7 +30,6 @@
         {
             this.labelBienvenue = new System.Windows.Forms.Label();
             this.textBoxPrenom = new System.Windows.Forms.TextBox();
-            this.textBoxClasse = new System.Windows.Forms.TextBox();
             this.textBoxDateDeNaissance = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNom = new System.Windows.Forms.TextBox();
@@ -48,6 +47,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxTelParent = new System.Windows.Forms.TextBox();
+            this.comboBoxClasse = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelBienvenue
@@ -75,19 +75,6 @@
             this.textBoxPrenom.TabIndex = 14;
             this.textBoxPrenom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxPrenom.WordWrap = false;
-            // 
-            // textBoxClasse
-            // 
-            this.textBoxClasse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxClasse.Font = new System.Drawing.Font("Arial", 16F);
-            this.textBoxClasse.Location = new System.Drawing.Point(749, 361);
-            this.textBoxClasse.MaxLength = 32;
-            this.textBoxClasse.Multiline = true;
-            this.textBoxClasse.Name = "textBoxClasse";
-            this.textBoxClasse.Size = new System.Drawing.Size(240, 59);
-            this.textBoxClasse.TabIndex = 15;
-            this.textBoxClasse.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxClasse.WordWrap = false;
             // 
             // textBoxDateDeNaissance
             // 
@@ -303,11 +290,21 @@
             this.textBoxTelParent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxTelParent.WordWrap = false;
             // 
+            // comboBoxClasse
+            // 
+            this.comboBoxClasse.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.comboBoxClasse.FormattingEnabled = true;
+            this.comboBoxClasse.Location = new System.Drawing.Point(754, 361);
+            this.comboBoxClasse.Name = "comboBoxClasse";
+            this.comboBoxClasse.Size = new System.Drawing.Size(235, 39);
+            this.comboBoxClasse.TabIndex = 44;
+            // 
             // Ajout_Eleve
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1422, 877);
+            this.Controls.Add(this.comboBoxClasse);
             this.Controls.Add(this.textBoxTelParent);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label8);
@@ -324,7 +321,6 @@
             this.Controls.Add(this.textBoxTelEleve);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxDateDeNaissance);
-            this.Controls.Add(this.textBoxClasse);
             this.Controls.Add(this.textBoxPrenom);
             this.Controls.Add(this.textBoxNom);
             this.Controls.Add(this.labelBienvenue);
@@ -341,7 +337,6 @@
 
         private System.Windows.Forms.Label labelBienvenue;
         private System.Windows.Forms.TextBox textBoxPrenom;
-        private System.Windows.Forms.TextBox textBoxClasse;
         private System.Windows.Forms.TextBox textBoxDateDeNaissance;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxNom;
@@ -359,5 +354,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxTelParent;
+        private System.Windows.Forms.ComboBox comboBoxClasse;
     }
 }

@@ -22,11 +22,12 @@ namespace InfirmerieGUI
         {
             InitializeComponent();
             ConnexionBLL.SetchaineConnexion(ConfigurationManager.ConnectionStrings["Infirmerie"]);
+            comboBoxClasse.DataSource = ConnexionBLL.getClasses();
 
             //Préremplissage
             textBoxNom.Text = el.nom;
             textBoxPrenom.Text = el.prenom;
-            textBoxClasse.Text = el.classe.ToString();
+            comboBoxClasse.SelectedItem = el.classe;
             textBoxTelEleve.Text = el.port.ToString();
             textBoxTelParent.Text = el.parent_port.ToString();
             textBoxComSante.Text = el.comm_sante;
@@ -49,19 +50,19 @@ namespace InfirmerieGUI
             bool tiersTemps = checkBoxTiersTemps.Checked;
             string commSante = textBoxComSante.Text;
 
-            int classe;
             int teleleve;
             int telparent;
-            string value = textBoxClasse.Text;
-            int.TryParse(value, out classe);
-            value = textBoxTelEleve.Text;
+            string value = textBoxTelEleve.Text;
             int.TryParse(value, out teleleve);
             value = textBoxTelParent.Text;
             int.TryParse(value, out telparent);
 
+            object classeobj = comboBoxClasse.SelectedItem;
+            Classe classe = classeobj as Classe;
+
 
             //Vérifications
-            if (nom == "" || prenom == "" || classe == 0 || dateDeNaissance == "" || teleleve == 0 || telparent == 0)
+            if (nom == "" || prenom == "" || classe.id == 0 || dateDeNaissance == "" || teleleve == 0 || telparent == 0)
             {
                 MessageBox.Show("Veuillez rentrer toutes les informations obligatoires.");
             }

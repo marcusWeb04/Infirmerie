@@ -100,7 +100,7 @@ namespace InfirmerieDAL
             cmd.Parameters.AddWithValue("@naiss", eleve.naiss);
             cmd.Parameters.AddWithValue("@port", eleve.port);
             cmd.Parameters.AddWithValue("@parent_port", eleve.parent_port);
-            cmd.Parameters.AddWithValue("@classe", eleve.classe);
+            cmd.Parameters.AddWithValue("@classe", eleve.classe.id);
             cmd.Parameters.AddWithValue("@tiers_temps", eleve.tiers_temps);
 
             // Cas spécial : insertion d'un null en BDD
@@ -171,7 +171,7 @@ namespace InfirmerieDAL
             cmd.Parameters.AddWithValue("@naiss", eleve.naiss);
             cmd.Parameters.AddWithValue("@port", eleve.port);
             cmd.Parameters.AddWithValue("@parent_port", eleve.parent_port);
-            cmd.Parameters.AddWithValue("@classe", eleve.classe);
+            cmd.Parameters.AddWithValue("@classe", eleve.classe.id);
             cmd.Parameters.AddWithValue("@tiers_temps", eleve.tiers_temps);
 
             // Cas spécial : insertion d'un null en BDD
@@ -205,6 +205,7 @@ namespace InfirmerieDAL
             cmd.Connection = maConnexion;
             cmd.CommandText =
                 "SELECT * FROM eleve " +
+                "JOIN classe ON eleve_classe = classe_id " +
                 "WHERE eleve_prenom LIKE @cond " +
                 "OR eleve_nom LIKE @cond";
             cmd.Parameters.AddWithValue("@cond", "%" + condition + "%");
@@ -220,7 +221,8 @@ namespace InfirmerieDAL
                 string naiss = reader["eleve_naiss"].ToString();
                 int port = Int32.Parse(reader["eleve_port"].ToString());
                 int parent_port = Int32.Parse(reader["eleve_parent_port"].ToString());
-                int classe = Int32.Parse(reader["eleve_classe"].ToString());
+                int classeid = Int32.Parse(reader["eleve_classe"].ToString());
+                string classelib = reader["classe_lib"].ToString();
                 bool tiers_temps = false;
                 if (reader["eleve_classe"].ToString() == "1")
                 {
@@ -228,7 +230,7 @@ namespace InfirmerieDAL
                 }
                 string comm_sante = reader["eleve_comm_sante"].ToString();
 
-                Eleve temp = new Eleve(id, nom, prenom, naiss, port, parent_port, classe, tiers_temps, comm_sante);
+                Eleve temp = new Eleve(id, nom, prenom, naiss, port, parent_port, new Classe(classeid, classelib), tiers_temps, comm_sante);
                 res.Add(temp);
             }
             maConnexion.Close();

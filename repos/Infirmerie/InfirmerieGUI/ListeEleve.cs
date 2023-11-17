@@ -114,7 +114,6 @@ namespace InfirmerieGUI
             if (dgv.SelectedRows.Count > 0)
             {
                 string selectedValue = dgv.SelectedRows[0].Cells["id"].Value.ToString();
-                MessageBox.Show(selectedValue);
                 int selectedId = 0;
                 int.TryParse(selectedValue, out selectedId);
                 foreach (InfirmerieBO.Eleve el in global_eleves)

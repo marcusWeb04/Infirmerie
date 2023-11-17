@@ -19,11 +19,12 @@ namespace InfirmerieGUI
         {
             InitializeComponent();
             ConnexionBLL.SetchaineConnexion(ConfigurationManager.ConnectionStrings["Infirmerie"]);
+            comboBoxClasse.DataSource = ConnexionBLL.getClasses();
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)
         {
-            //Affiche du formulaire Élève
+            //Affichage du formulaire Élève
             this.Hide();
             Eleve Eleve = new Eleve();
             Eleve.ShowDialog();
@@ -39,18 +40,18 @@ namespace InfirmerieGUI
             bool tiersTemps = checkBoxTiersTemps.Checked;
             string commSante = textBoxComSante.Text;
 
-            int classe;
             int teleleve;
             int telparent;
-            string value = textBoxClasse.Text; 
-            int.TryParse(value, out classe);
-            value = textBoxTelEleve.Text;
+            object classeobj = comboBoxClasse.SelectedItem;
+            Classe classe = classeobj as Classe;
+
+            string value = textBoxTelEleve.Text;
             int.TryParse(value, out teleleve);
             value = textBoxTelParent.Text;
             int.TryParse(value, out telparent);
 
             //Vérifications
-            if (nom == "" || prenom == "" || classe == 0 || dateDeNaissance == "" || teleleve == 0 || telparent == 0)
+            if (nom == "" || prenom == "" || classe.id == 0 || dateDeNaissance == "" || teleleve == 0 || telparent == 0)
             {
                 MessageBox.Show("Veuillez rentrer toutes les informations obligatoires.");
             }
@@ -81,6 +82,11 @@ namespace InfirmerieGUI
         }
 
         private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBoxClasse_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

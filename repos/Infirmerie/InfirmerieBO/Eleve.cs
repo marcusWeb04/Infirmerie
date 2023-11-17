@@ -16,12 +16,12 @@ namespace InfirmerieBO
         private string eleve_naiss;
         private int eleve_port;
         private int eleve_parent_port;
-        private int eleve_classe;
+        private Classe eleve_classe;
         private bool eleve_tiers_temps;
         private string? eleve_comm_sante;
 
         //Constructeur
-        public Eleve(int eleve_id, string eleve_nom, string eleve_prenom, string eleve_naiss, int eleve_port, int eleve_parent_port, int eleve_classe, 
+        public Eleve(int eleve_id, string eleve_nom, string eleve_prenom, string eleve_naiss, int eleve_port, int eleve_parent_port, Classe eleve_classe, 
             bool eleve_tiers_temps, string? eleve_comm_sante)
         {
             this.eleve_id = eleve_id;
@@ -42,7 +42,7 @@ namespace InfirmerieBO
         public string naiss { get => eleve_naiss; set => eleve_naiss = value; }
         public int port { get => eleve_port; set => eleve_port = value; }
         public int parent_port { get => eleve_parent_port; set => eleve_parent_port = value; }
-        public int classe { get => eleve_classe; set => eleve_classe = value; }
+        public Classe classe { get => eleve_classe; set => eleve_classe = value; }
         public bool tiers_temps { get => eleve_tiers_temps; set => eleve_tiers_temps = value; }
         public string? comm_sante { get => eleve_comm_sante; set => eleve_comm_sante = value; }
     }

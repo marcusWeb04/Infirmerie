@@ -20,5 +20,9 @@ namespace InfirmerieBO
         public int id { get => classe_id; set => classe_id = value; }
         public string lib { get => classe_lib; set => classe_lib = value; }
 
+        public override string ToString()
+        {
+            return classe_lib;
+        }
     }
 }

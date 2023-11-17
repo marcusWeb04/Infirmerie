@@ -158,6 +158,7 @@
             this.ClientSize = new System.Drawing.Size(1422, 877);
             this.Controls.Add(this.panel1);
             this.Name = "ListeEleve";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListeEleve";
             ((System.ComponentModel.ISupportInitialize)(this.bD_UtilisateursDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDUtilisateursDataSetBindingSource)).EndInit();
