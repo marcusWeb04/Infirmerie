@@ -34,9 +34,9 @@
             this.dgv = new System.Windows.Forms.DataGridView();
             this.labelBienvenue = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonRetour = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.buttonModifier = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.buttonRetour = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bD_UtilisateursDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bDUtilisateursDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -72,6 +72,7 @@
             this.dgv.RowHeadersWidth = 51;
             this.dgv.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv.RowTemplate.Height = 24;
+            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(1164, 399);
             this.dgv.TabIndex = 0;
             this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -103,21 +104,21 @@
             this.panel1.TabIndex = 11;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // buttonRetour
+            // buttonModifier
             // 
-            this.buttonRetour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(168)))), ((int)(((byte)(134)))));
-            this.buttonRetour.FlatAppearance.BorderSize = 0;
-            this.buttonRetour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonRetour.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRetour.ForeColor = System.Drawing.Color.White;
-            this.buttonRetour.Location = new System.Drawing.Point(0, 659);
-            this.buttonRetour.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonRetour.Name = "buttonRetour";
-            this.buttonRetour.Size = new System.Drawing.Size(323, 80);
-            this.buttonRetour.TabIndex = 14;
-            this.buttonRetour.Text = "Retour";
-            this.buttonRetour.UseVisualStyleBackColor = false;
-            this.buttonRetour.Click += new System.EventHandler(this.buttonRetour_Click);
+            this.buttonModifier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(49)))), ((int)(((byte)(104)))));
+            this.buttonModifier.FlatAppearance.BorderSize = 0;
+            this.buttonModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModifier.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonModifier.ForeColor = System.Drawing.Color.White;
+            this.buttonModifier.Location = new System.Drawing.Point(912, 659);
+            this.buttonModifier.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonModifier.Name = "buttonModifier";
+            this.buttonModifier.Size = new System.Drawing.Size(323, 80);
+            this.buttonModifier.TabIndex = 16;
+            this.buttonModifier.Text = "Modifier";
+            this.buttonModifier.UseVisualStyleBackColor = false;
+            this.buttonModifier.Click += new System.EventHandler(this.buttonModifier_Click);
             // 
             // button1
             // 
@@ -134,20 +135,21 @@
             this.button1.Text = "Ajouter une visite";
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // buttonModifier
+            // buttonRetour
             // 
-            this.buttonModifier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(49)))), ((int)(((byte)(104)))));
-            this.buttonModifier.FlatAppearance.BorderSize = 0;
-            this.buttonModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModifier.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonModifier.ForeColor = System.Drawing.Color.White;
-            this.buttonModifier.Location = new System.Drawing.Point(912, 659);
-            this.buttonModifier.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonModifier.Name = "buttonModifier";
-            this.buttonModifier.Size = new System.Drawing.Size(323, 80);
-            this.buttonModifier.TabIndex = 16;
-            this.buttonModifier.Text = "Modifier";
-            this.buttonModifier.UseVisualStyleBackColor = false;
+            this.buttonRetour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(168)))), ((int)(((byte)(134)))));
+            this.buttonRetour.FlatAppearance.BorderSize = 0;
+            this.buttonRetour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRetour.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRetour.ForeColor = System.Drawing.Color.White;
+            this.buttonRetour.Location = new System.Drawing.Point(0, 659);
+            this.buttonRetour.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonRetour.Name = "buttonRetour";
+            this.buttonRetour.Size = new System.Drawing.Size(323, 80);
+            this.buttonRetour.TabIndex = 14;
+            this.buttonRetour.Text = "Retour";
+            this.buttonRetour.UseVisualStyleBackColor = false;
+            this.buttonRetour.Click += new System.EventHandler(this.buttonRetour_Click);
             // 
             // ListeEleve
             // 

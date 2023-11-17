@@ -18,6 +18,7 @@ namespace InfirmerieGUI
     public partial class ListeEleve : Form
     {
 
+        public static List<InfirmerieBO.Eleve> global_eleves;
         public ListeEleve()
         {
             InitializeComponent();
@@ -52,10 +53,17 @@ namespace InfirmerieGUI
             // Créez une colonne de bouton personnalisée
             DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
             buttonColumn.HeaderText = "Action";
-            buttonColumn.Text = "Click Me";
+            buttonColumn.Text = "Séléctionner";
             buttonColumn.UseColumnTextForButtonValue = true; // Affiche le texte du bouton dans chaque cellule
 
-            
+
+
+
+            //Colonne ID Cachée
+            DataGridViewTextBoxColumn IdColumn = new DataGridViewTextBoxColumn();
+            IdColumn.DataPropertyName = "id";
+            IdColumn.Visible = false;
+            IdColumn.Name = "id";
 
 
             // Ajout des 5 en-têtes de colonne au datagridview
@@ -64,6 +72,7 @@ namespace InfirmerieGUI
             dgv.Columns.Add(ClasseColumn);
             dgv.Columns.Add(NaissanceColumn);
             dgv.Columns.Add(buttonColumn);
+            dgv.Columns.Add(IdColumn);
 
             // Définition du style apporté au datagridview
             dgv.ColumnHeadersVisible = true;
@@ -72,7 +81,8 @@ namespace InfirmerieGUI
             columnHeaderStyle.Font = new Font("Regular", 10, FontStyle.Bold);
             dgv.ColumnHeadersDefaultCellStyle = columnHeaderStyle;
 
-            dgv.DataSource = ConnexionBLL.getEleves("");
+            global_eleves = ConnexionBLL.getEleves("");
+            dgv.DataSource = global_eleves;
 
         }
 
@@ -97,6 +107,26 @@ namespace InfirmerieGUI
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void buttonModifier_Click(object sender, EventArgs e)
+        {
+            if (dgv.SelectedRows.Count > 0)
+            {
+                string selectedValue = dgv.SelectedRows[0].Cells["id"].Value.ToString();
+                MessageBox.Show(selectedValue);
+                int selectedId = 0;
+                int.TryParse(selectedValue, out selectedId);
+                foreach (InfirmerieBO.Eleve el in global_eleves)
+                {
+                    if (el.id == selectedId)
+                    {
+                        this.Hide();
+                        Modif_Eleve modif = new Modif_Eleve(el);
+                        modif.ShowDialog(); 
+                    }
+                }
+            }
         }
     }
 }
