@@ -19,7 +19,7 @@ namespace InfirmerieGUI
     {
 
         public static List<InfirmerieBO.Eleve> global_eleves;
-        public ListeEleve()
+        public ListeEleve(string cond)
         {
             InitializeComponent();
 
@@ -81,7 +81,7 @@ namespace InfirmerieGUI
             columnHeaderStyle.Font = new Font("Regular", 10, FontStyle.Bold);
             dgv.ColumnHeadersDefaultCellStyle = columnHeaderStyle;
 
-            global_eleves = ConnexionBLL.getEleves("");
+            global_eleves = ConnexionBLL.getEleves(cond);
             dgv.DataSource = global_eleves;
 
         }

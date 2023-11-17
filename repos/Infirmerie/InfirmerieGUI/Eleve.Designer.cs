@@ -53,7 +53,7 @@
             this.buttonAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAjouter.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAjouter.ForeColor = System.Drawing.Color.White;
-            this.buttonAjouter.Location = new System.Drawing.Point(0, 659);
+            this.buttonAjouter.Location = new System.Drawing.Point(912, 659);
             this.buttonAjouter.Margin = new System.Windows.Forms.Padding(0);
             this.buttonAjouter.Name = "buttonAjouter";
             this.buttonAjouter.Size = new System.Drawing.Size(323, 80);
@@ -69,7 +69,7 @@
             this.buttonRetour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRetour.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRetour.ForeColor = System.Drawing.Color.White;
-            this.buttonRetour.Location = new System.Drawing.Point(912, 659);
+            this.buttonRetour.Location = new System.Drawing.Point(0, 659);
             this.buttonRetour.Margin = new System.Windows.Forms.Padding(0);
             this.buttonRetour.Name = "buttonRetour";
             this.buttonRetour.Size = new System.Drawing.Size(323, 80);
@@ -129,8 +129,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.panel2.Controls.Add(this.buttonRetour);
             this.panel2.Controls.Add(this.buttonAjouter);
+            this.panel2.Controls.Add(this.buttonRetour);
             this.panel2.Controls.Add(this.labelRecherche);
             this.panel2.Location = new System.Drawing.Point(94, 69);
             this.panel2.Name = "panel2";
