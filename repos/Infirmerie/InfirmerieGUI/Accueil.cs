@@ -45,7 +45,9 @@ namespace InfirmerieGUI
 
         private void buttonMedicaments_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Medicament med = new Medicament();
+            med.Show();
         }
 
         private void buttonDeconnexion_Click_1(object sender, EventArgs e)
