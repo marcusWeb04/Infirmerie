@@ -224,7 +224,7 @@ namespace InfirmerieDAL
                 int classeid = Int32.Parse(reader["eleve_classe"].ToString());
                 string classelib = reader["classe_lib"].ToString();
                 bool tiers_temps = false;
-                if (reader["eleve_classe"].ToString() == "1")
+                if (reader["eleve_tiers_temps"].ToString() == "True")
                 {
                     tiers_temps = true;
                 }
