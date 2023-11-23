@@ -61,7 +61,16 @@ namespace InfirmerieDAL
             }
         }
 
+
+
+
+
         // Méthode d'authentification
+
+
+
+
+
         public static bool GetUtilisateur(Utilisateur uti)
         {
             //Connexion à la BDD
@@ -83,6 +92,16 @@ namespace InfirmerieDAL
 
             return (res);
         }
+
+
+
+
+        // Eleve
+
+
+
+
+
         public static bool addEleve(Eleve eleve)
         {
             //Connexion à la BDD
@@ -258,6 +277,115 @@ namespace InfirmerieDAL
                 string nom = reader["classe_lib"].ToString();
 
                 Classe temp = new Classe(id, nom);
+                res.Add(temp);
+            }
+            maConnexion.Close();
+            return res;
+        }
+
+
+
+
+        // Medicament
+
+
+
+
+        public static bool addMedicament(Medicament med)
+        {
+            //Connexion à la BDD
+            int res;
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "INSERT INTO medicament (medic_lib)" +
+                "VALUES (@lib)";
+            cmd.Parameters.AddWithValue("@lib", med.lib);
+
+            //Execution de la requête
+            res = cmd.ExecuteNonQuery();
+            maConnexion.Close();
+
+            if (res == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool deleteMedicament(Medicament med)
+        {
+            //Connexion à la BDD
+            int res;
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "DELETE FROM medicament " +
+                "WHERE medic_id = @id";
+            cmd.Parameters.AddWithValue("@id", med.id);
+
+            //Execution de la requête
+            res = cmd.ExecuteNonQuery();
+            maConnexion.Close();
+
+            if (res == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool editMedicament(Medicament med)
+        {
+            int res;
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "UPDATE medicament SET [medic_lib] = @lib " +
+                "WHERE [medic_id] = @id";
+            cmd.Parameters.AddWithValue("@id", med.id);
+            cmd.Parameters.AddWithValue("@lib", med.lib);
+
+            //Execution de la requête
+            res = cmd.ExecuteNonQuery();
+            maConnexion.Close();
+
+            if (res == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static List<Medicament> getMedicaments(string condition)
+        {
+            //Connexion à la BDD
+            List<Medicament> res = new List<Medicament>();
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "SELECT * FROM medicament " +
+                "WHERE medic_lib LIKE @cond";
+            cmd.Parameters.AddWithValue("@cond", "%" + condition + "%");
+
+            //Execution de la requête
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                //Création d'un objet Medicament et ajout de l'objet dans la liste de retour
+                int id = Int32.Parse(reader["medic_id"].ToString());
+                string lib = reader["medic_lib"].ToString();
+
+                Medicament temp = new Medicament(id, lib, 0);
                 res.Add(temp);
             }
             maConnexion.Close();
