@@ -78,8 +78,8 @@ namespace InfirmerieGUI
         {
             //Affichage du formulaire de la recherche d'élèves
             this.Hide();
-            Eleve Eleve = new Eleve();
-            Eleve.ShowDialog();
+            Medicament Medicament = new Medicament();
+            Medicament.ShowDialog();
         }
 
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
