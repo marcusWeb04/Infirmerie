@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InfirmerieBO
 {
-    internal class Medicament
+    public class Medicament
     {
         // Attributs
         private int medic_id;
