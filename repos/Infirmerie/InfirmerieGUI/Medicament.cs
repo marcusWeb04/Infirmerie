@@ -12,10 +12,12 @@ namespace InfirmerieGUI
 {
     public partial class Medicament : Form
     {
+
         public Medicament()
         {
             InitializeComponent();
         }
+
         private void buttonRechercher_Click(object sender, EventArgs e)
         {
             // this.Hide();
@@ -40,6 +42,26 @@ namespace InfirmerieGUI
             // this.Hide();
             // Ajout_Medicament am = new Ajout_Medicament();
             // am.ShowDialog();
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBoxRecherche_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonRetour_Click_1(object sender, EventArgs e)
+        {
+
+            //Retour à la page d'accueil
+            this.Hide();
+            Accueil Accueil = new Accueil();
+            Accueil.ShowDialog();
+
         }
     }
 }
