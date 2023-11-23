@@ -12,6 +12,10 @@ namespace InfirmerieGUI
 {
     public partial class Medicament : Form
     {
+        public Medicament()
+        {
+            InitializeComponent();
+        }
         private void buttonRechercher_Click(object sender, EventArgs e)
         {
             // this.Hide();
