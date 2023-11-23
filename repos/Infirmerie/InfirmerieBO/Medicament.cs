@@ -22,19 +22,19 @@ namespace InfirmerieBO
         }
 
         // Getter/Setters
-        public int Id_medic
+        public int id
         { 
             get => medic_id; 
             set => medic_id = value; 
         
         }
-        public string Lib_medic
+        public string lib
         { 
             get => medic_lib; 
             set => medic_lib = value; 
         }
 
-        public int Number_medic
+        public int nb
         {
             get => medic_number;
             set => medic_number = value;
