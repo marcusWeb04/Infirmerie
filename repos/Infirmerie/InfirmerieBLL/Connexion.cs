@@ -31,29 +31,53 @@ namespace InfirmerieBLL
         }
 
         //Référence à la couche DAL
-        public static bool GetUtilisateur(Utilisateur uti) 
+            
+        //Utilisateur
+        public static bool GetUtilisateur(Utilisateur uti)
         {
             return ConnexionBDD.GetUtilisateur(uti);
         }
+
+        //Elève   
         public static bool addEleve(Eleve el)
         {
             return ConnexionBDD.addEleve(el);
-        }
-        public static bool editEleve(Eleve el)
-        {
-            return ConnexionBDD.editEleve(el);
         }
         public static bool deleteEleve(Eleve el)
         {
             return ConnexionBDD.deleteEleve(el);
         }
-        public static List<Eleve> getEleves(string condition)
+        public static bool editEleve(Eleve el)
         {
-            return ConnexionBDD.getEleves(condition);
+            return ConnexionBDD.editEleve(el);
+        }
+        public static List<Eleve> getEleves(string cond)
+        {
+            return ConnexionBDD.getEleves(cond);
         }
         public static List<Classe> getClasses()
         {
             return ConnexionBDD.getClasses();
         }
+
+        //Médicament
+
+        public static bool addMedicament(Medicament med)
+        {
+            return ConnexionBDD.addMedicament(med);
+        }
+        public static bool deleteMedicament(Medicament med)
+        {
+            return ConnexionBDD.deleteMedicament(med);
+        }
+        public static bool editMedicament(Medicament med)
+        {
+            return ConnexionBDD.editMedicament(med);
+        }
+        public static List<Medicament> getMedicaments(string cond)
+        {
+            return ConnexionBDD.getMedicaments(cond);
+        }
+
     }
 }
