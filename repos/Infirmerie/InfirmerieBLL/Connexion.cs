@@ -31,34 +31,36 @@ namespace InfirmerieBLL
         }
 
         //Référence à la couche DAL
-            
-        //Utilisateur
-        public static bool GetUtilisateur(Utilisateur uti)
+        public static bool GetUtilisateur(Utilisateur uti) 
         {
             return ConnexionBDD.GetUtilisateur(uti);
         }
+        
 
-        //Elève   
+        //Élève
+
+
         public static bool addEleve(Eleve el)
         {
             return ConnexionBDD.addEleve(el);
-        }
-        public static bool deleteEleve(Eleve el)
-        {
-            return ConnexionBDD.deleteEleve(el);
         }
         public static bool editEleve(Eleve el)
         {
             return ConnexionBDD.editEleve(el);
         }
-        public static List<Eleve> getEleves(string cond)
+        public static bool deleteEleve(Eleve el)
         {
-            return ConnexionBDD.getEleves(cond);
+            return ConnexionBDD.deleteEleve(el);
+        }
+        public static List<Eleve> getEleves(string condition)
+        {
+            return ConnexionBDD.getEleves(condition);
         }
         public static List<Classe> getClasses()
         {
             return ConnexionBDD.getClasses();
         }
+
 
         //Médicament
 
@@ -79,5 +81,49 @@ namespace InfirmerieBLL
             return ConnexionBDD.getMedicaments(cond);
         }
 
+
+        //Contrôles de saisie
+        public static bool saisieTexte(string input)
+        {
+            //Liste de caractères autorisés
+            List<char> checklist = new List<char>
+                { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+                'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+                '-','é','è','ê','ë','É' };
+            foreach (char c in input)
+            {
+                //Si un caractère qui n'est pas dans la liste est trouvé, false
+                if (!checklist.Contains(c)) 
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public static bool saisieTel(string input)
+        {
+            int length = input.Length;
+            //Liste de caractères autorisés
+            List<char> checklist = new List<char>
+                { '0','1','2','3','4','5','6','7','8','9','+',' '};
+            foreach (char c in input)
+            {
+                if (!checklist.Contains(c))
+                {
+                    //Si un caractère qui n'est pas dans la liste est trouvé, false
+                    return false;
+                }
+                if (c == ' ' || c == '+')
+                {
+                    //On déduit les espaces et + de la longueur du n° pour vérifier la longeur avec précision
+                    length -= 1;
+                }
+            }
+            if (length < 10)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
