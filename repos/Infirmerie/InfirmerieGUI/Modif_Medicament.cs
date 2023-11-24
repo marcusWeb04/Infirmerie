@@ -52,9 +52,13 @@ namespace InfirmerieGUI
             {
                 //On crée un objet élève
                 InfirmerieBO.Medicament med = new InfirmerieBO.Medicament(global_med.id, lib, 0);
-                if (ConnexionBLL.addMedicament(med))
+                if (ConnexionBLL.editMedicament(med))
                 {
                     MessageBox.Show("Médicament modifié!");
+                    //Retour à la page Medicament
+                    this.Hide();
+                    Medicament Medicament = new Medicament();
+                    Medicament.ShowDialog();
                 }
                 else
                 {
@@ -65,7 +69,9 @@ namespace InfirmerieGUI
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-
+            //Retour à la page Medicament
+            Modif_Medicament_Modale Modif_Medicament_Modale = new Modif_Medicament_Modale(global_med, this);
+            Modif_Medicament_Modale.ShowDialog();
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)

@@ -114,6 +114,12 @@
     <Compile Include="Modif_Medicament.Designer.cs">
       <DependentUpon>Modif_Medicament.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modif_Medicament_Modale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modif_Medicament_Modale.Designer.cs">
+      <DependentUpon>Modif_Medicament_Modale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Accueil.resx">
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modif_Medicament.resx">
       <DependentUpon>Modif_Medicament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modif_Medicament_Modale.resx">
+      <DependentUpon>Modif_Medicament_Modale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

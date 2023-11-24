@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonAjoutMedic = new System.Windows.Forms.Button();
+            this.textBoxLib = new System.Windows.Forms.TextBox();
+            this.labelBienvenue = new System.Windows.Forms.Label();
             this.buttonRetour = new System.Windows.Forms.Button();
             this.labelRecherche = new System.Windows.Forms.Label();
-            this.labelBienvenue = new System.Windows.Forms.Label();
-            this.textBoxLib = new System.Windows.Forms.TextBox();
-            this.buttonAjoutMedic = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +49,45 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1235, 739);
             this.panel2.TabIndex = 23;
+            // 
+            // buttonAjoutMedic
+            // 
+            this.buttonAjoutMedic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(47)))), ((int)(((byte)(104)))));
+            this.buttonAjoutMedic.FlatAppearance.BorderSize = 0;
+            this.buttonAjoutMedic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAjoutMedic.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAjoutMedic.ForeColor = System.Drawing.Color.White;
+            this.buttonAjoutMedic.Location = new System.Drawing.Point(299, 374);
+            this.buttonAjoutMedic.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonAjoutMedic.Name = "buttonAjoutMedic";
+            this.buttonAjoutMedic.Size = new System.Drawing.Size(289, 64);
+            this.buttonAjoutMedic.TabIndex = 23;
+            this.buttonAjoutMedic.Text = "Ajouter";
+            this.buttonAjoutMedic.UseVisualStyleBackColor = false;
+            this.buttonAjoutMedic.Click += new System.EventHandler(this.buttonAjoutMedic_Click);
+            // 
+            // textBoxLib
+            // 
+            this.textBoxLib.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxLib.Location = new System.Drawing.Point(665, 374);
+            this.textBoxLib.Multiline = true;
+            this.textBoxLib.Name = "textBoxLib";
+            this.textBoxLib.Size = new System.Drawing.Size(289, 64);
+            this.textBoxLib.TabIndex = 22;
+            this.textBoxLib.TextChanged += new System.EventHandler(this.textBoxRecherche_TextChanged);
+            // 
+            // labelBienvenue
+            // 
+            this.labelBienvenue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.labelBienvenue.Font = new System.Drawing.Font("Arial", 31.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBienvenue.ForeColor = System.Drawing.Color.Black;
+            this.labelBienvenue.Location = new System.Drawing.Point(6, 58);
+            this.labelBienvenue.Name = "labelBienvenue";
+            this.labelBienvenue.Size = new System.Drawing.Size(1226, 58);
+            this.labelBienvenue.TabIndex = 20;
+            this.labelBienvenue.Text = "Ajout Médicament";
+            this.labelBienvenue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelBienvenue.Click += new System.EventHandler(this.labelBienvenue_Click);
             // 
             // buttonRetour
             // 
@@ -78,44 +117,6 @@
             this.labelRecherche.Text = "Libellé :";
             this.labelRecherche.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelRecherche.Click += new System.EventHandler(this.labelRecherche_Click);
-            // 
-            // labelBienvenue
-            // 
-            this.labelBienvenue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.labelBienvenue.Font = new System.Drawing.Font("Arial", 31.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBienvenue.ForeColor = System.Drawing.Color.Black;
-            this.labelBienvenue.Location = new System.Drawing.Point(6, 58);
-            this.labelBienvenue.Name = "labelBienvenue";
-            this.labelBienvenue.Size = new System.Drawing.Size(1226, 58);
-            this.labelBienvenue.TabIndex = 20;
-            this.labelBienvenue.Text = "Ajout Médicament";
-            this.labelBienvenue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelBienvenue.Click += new System.EventHandler(this.labelBienvenue_Click);
-            // 
-            // textBoxLib
-            // 
-            this.textBoxLib.Location = new System.Drawing.Point(665, 374);
-            this.textBoxLib.Multiline = true;
-            this.textBoxLib.Name = "textBoxLib";
-            this.textBoxLib.Size = new System.Drawing.Size(289, 64);
-            this.textBoxLib.TabIndex = 22;
-            this.textBoxLib.TextChanged += new System.EventHandler(this.textBoxRecherche_TextChanged);
-            // 
-            // buttonAjoutMedic
-            // 
-            this.buttonAjoutMedic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(47)))), ((int)(((byte)(104)))));
-            this.buttonAjoutMedic.FlatAppearance.BorderSize = 0;
-            this.buttonAjoutMedic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAjoutMedic.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAjoutMedic.ForeColor = System.Drawing.Color.White;
-            this.buttonAjoutMedic.Location = new System.Drawing.Point(299, 374);
-            this.buttonAjoutMedic.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonAjoutMedic.Name = "buttonAjoutMedic";
-            this.buttonAjoutMedic.Size = new System.Drawing.Size(289, 64);
-            this.buttonAjoutMedic.TabIndex = 23;
-            this.buttonAjoutMedic.Text = "Ajouter";
-            this.buttonAjoutMedic.UseVisualStyleBackColor = false;
-            this.buttonAjoutMedic.Click += new System.EventHandler(this.buttonAjoutMedic_Click);
             // 
             // Ajout_Medicament
             // 

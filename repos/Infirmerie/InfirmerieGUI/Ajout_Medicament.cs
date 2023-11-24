@@ -60,6 +60,10 @@ namespace InfirmerieGUI
                 if (ConnexionBLL.addMedicament(el))
                 {
                     MessageBox.Show("Médicament ajouté!");
+                    //Redirection sur la page Médicament
+                    this.Hide();
+                    Medicament Medicament = new Medicament();
+                    Medicament.Show();
                 }
                 else
                 {
