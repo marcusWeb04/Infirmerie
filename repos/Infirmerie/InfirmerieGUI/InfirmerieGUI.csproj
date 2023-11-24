@@ -59,12 +59,6 @@
     <Compile Include="Ajout_Eleve.designer.cs">
       <DependentUpon>Ajout_Eleve.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ajout_Medicament.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Ajout_Medicament.Designer.cs">
-      <DependentUpon>Ajout_Medicament.cs</DependentUpon>
-    </Compile>
     <Compile Include="BD_UtilisateursDataSet.Designer.cs" />
     <Compile Include="Connexion.cs">
       <SubType>Form</SubType>
@@ -84,7 +78,9 @@
     <Compile Include="ListeEleve.designer.cs">
       <DependentUpon>ListeEleve.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListeMedicament.cs" />
+    <Compile Include="ListeMedicament.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ListeMedicament.Designer.cs">
       <DependentUpon>ListeMedicament.cs</DependentUpon>
     </Compile>
@@ -113,9 +109,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ajout_Eleve.resx">
       <DependentUpon>Ajout_Eleve.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Ajout_Medicament.resx">
-      <DependentUpon>Ajout_Medicament.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Connexion.resx">
       <DependentUpon>Connexion.cs</DependentUpon>
