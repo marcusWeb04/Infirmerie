@@ -59,6 +59,18 @@
     <Compile Include="Ajout_Eleve.designer.cs">
       <DependentUpon>Ajout_Eleve.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ajout_Medicament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajout_Medicament.Designer.cs">
+      <DependentUpon>Ajout_Medicament.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ajout_Visite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ajout_Visite.Designer.cs">
+      <DependentUpon>Ajout_Visite.cs</DependentUpon>
+    </Compile>
     <Compile Include="BD_UtilisateursDataSet.Designer.cs" />
     <Compile Include="Connexion.cs">
       <SubType>Form</SubType>
@@ -102,19 +114,31 @@
     <Compile Include="Modif_Eleve_Modale.Designer.cs">
       <DependentUpon>Modif_Eleve_Modale.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Visite.cs">
+    <Compile Include="Modif_Medicament.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Visite.Designer.cs">
-      <DependentUpon>Visite.cs</DependentUpon>
+    <Compile Include="Modif_Medicament.Designer.cs">
+      <DependentUpon>Modif_Medicament.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modif_Medicament_Modale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modif_Medicament_Modale.Designer.cs">
+      <DependentUpon>Modif_Medicament_Modale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Accueil.resx">
       <DependentUpon>Accueil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ajout_Eleve.resx">
       <DependentUpon>Ajout_Eleve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ajout_Medicament.resx">
+      <DependentUpon>Ajout_Medicament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ajout_Visite.resx">
+      <DependentUpon>Ajout_Visite.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Connexion.resx">
       <DependentUpon>Connexion.cs</DependentUpon>
@@ -137,6 +161,12 @@
     <EmbeddedResource Include="Modif_Eleve_Modale.resx">
       <DependentUpon>Modif_Eleve_Modale.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modif_Medicament.resx">
+      <DependentUpon>Modif_Medicament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modif_Medicament_Modale.resx">
+      <DependentUpon>Modif_Medicament_Modale.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -146,9 +176,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Visite.resx">
-      <DependentUpon>Visite.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
