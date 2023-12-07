@@ -100,5 +100,10 @@ namespace InfirmerieBLL
         {
             return ConnexionBDD.getVisitesMois(cond, cond2);
         }
+
+        public static List<Visite> getVisitesNom(string cond)
+        {
+            return ConnexionBDD.getVisitesNom(cond);
+        }
     }
 }
