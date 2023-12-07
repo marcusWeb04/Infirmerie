@@ -625,6 +625,30 @@ namespace InfirmerieDAL
             SqlDataReader reader = cmd.ExecuteReader();
             return getVisites(reader, maConnexion);
         }
+
+
+        public static List<Visite> getVisitesNom(string cond_nom)
+        {
+            //Connexion à la BDD
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "SELECT * FROM visite v " +
+                "JOIN eleve e ON v.visite_eleve = e.eleve_id " +
+                "JOIN medicament m ON v.visite_medic = m.medic_id " +
+                "JOIN classe c on e.eleve_classe = c.classe_id " +
+                "WHERE (e.eleve_prenom LIKE @nom " +
+                "OR e.eleve_nom LIKE @nom ) ";
+
+            cmd.Parameters.AddWithValue("@nom", "%" + cond_nom + "%");
+
+            //Execution de la requête
+            SqlDataReader reader = cmd.ExecuteReader();
+            return getVisites(reader, maConnexion);
+        }
         public static List<Visite> getVisites(SqlDataReader reader, SqlConnection maConnexion)
         {
             List<Visite> res = new List<Visite>();
