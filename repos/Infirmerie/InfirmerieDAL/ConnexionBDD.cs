@@ -429,6 +429,36 @@ namespace InfirmerieDAL
                 cmd.Parameters.AddWithValue("@visite_utilisateur", visite.utilisateur);
             }
 
+            // Cas spécial : insertion d'un null en BDD
+            if (visite.medic == null)
+            {
+                cmd.Parameters.AddWithValue("@visite_medic", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@visite_medic", visite.medic.id);
+            }
+
+            // Cas spécial : insertion d'un null en BDD
+            if (visite.medic_qte == null)
+            {
+                cmd.Parameters.AddWithValue("@visite_medic_qte", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@visite_medic_qte", visite.medic_qte);
+            }
+
+            // Cas spécial : insertion d'un null en BDD
+            if (visite.comm == null)
+            {
+                cmd.Parameters.AddWithValue("@visite_utilisateur", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@visite_utilisateur", visite.comm);
+            }
+
             //Execution de la requête
             res = cmd.ExecuteNonQuery();
             maConnexion.Close();
