@@ -86,27 +86,12 @@ namespace InfirmerieGUI
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        private void labelBienvenue_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonRetour_Click(object sender, EventArgs e)
         {
             //Affichage du formulaire de la recherche d'élèves
             this.Hide();
             Eleve Eleve = new Eleve();
             Eleve.ShowDialog();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void buttonModifier_Click(object sender, EventArgs e)
@@ -123,6 +108,25 @@ namespace InfirmerieGUI
                         this.Hide();
                         Modif_Eleve modif = new Modif_Eleve(el);
                         modif.ShowDialog(); 
+                    }
+                }
+            }
+        }
+
+        private void buttonVisite_Click(object sender, EventArgs e)
+        {
+            if (dgv.SelectedRows.Count > 0)
+            {
+                string selectedValue = dgv.SelectedRows[0].Cells["id"].Value.ToString();
+                int selectedId = 0;
+                int.TryParse(selectedValue, out selectedId);
+                foreach (InfirmerieBO.Eleve el in global_eleves)
+                {
+                    if (el.id == selectedId)
+                    {
+                        this.Hide();
+                        Ajout_Visite av = new Ajout_Visite(el);
+                        av.ShowDialog();
                     }
                 }
             }
