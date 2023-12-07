@@ -81,6 +81,19 @@ namespace InfirmerieBLL
             return ConnexionBDD.getMedicaments(cond);
         }
 
+        //BLL
+        public static bool addVisite(Visite vi)
+        {
+            return ConnexionBDD.addVisite(vi);
+        }
+        public static bool deleteVisite(Visite vi)
+        {
+            return ConnexionBDD.deleteVisite(vi);
+        }
+        public static bool editVisite(Visite vi)
+        {
+            return ConnexionBDD.editVisite(vi);
+        }
 
         //Contrôles de saisie
         public static bool saisieTexte(string input)
@@ -89,7 +102,7 @@ namespace InfirmerieBLL
             List<char> checklist = new List<char>
                 { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
                 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-                '-','é','è','ê','ë','É' };
+                '-','é','è','ê','ë','É','È','Ê','Ë' };
             foreach (char c in input)
             {
                 //Si un caractère qui n'est pas dans la liste est trouvé, false
