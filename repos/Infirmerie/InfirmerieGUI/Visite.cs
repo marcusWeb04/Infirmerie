@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using InfirmerieBO;
+using InfirmerieBLL;
+
 namespace InfirmerieGUI
 {
     public partial class Visite : Form
@@ -22,7 +25,7 @@ namespace InfirmerieGUI
             //Retour vers la page d'accueil
             this.Hide();
             Accueil am = new Accueil();
-            am.ShowDialog();
+            am.Show();
         }
     }
 }

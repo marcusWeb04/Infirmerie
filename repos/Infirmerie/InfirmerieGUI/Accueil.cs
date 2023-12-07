@@ -57,5 +57,13 @@ namespace InfirmerieGUI
             Connexion Connexion = new Connexion();
             Connexion.ShowDialog();
         }
+
+        private void buttonVisites_Click(object sender, EventArgs e)
+        {
+            //Retour vers la page d'accueil
+            this.Hide();
+            Visite am = new Visite();
+            am.ShowDialog();
+        }
     }
 }

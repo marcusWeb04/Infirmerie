@@ -50,6 +50,7 @@
             this.buttonVisites.TabIndex = 12;
             this.buttonVisites.Text = "Visites";
             this.buttonVisites.UseVisualStyleBackColor = false;
+            this.buttonVisites.Click += new System.EventHandler(this.buttonVisites_Click);
             // 
             // buttonEleves
             // 
