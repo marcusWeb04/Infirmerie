@@ -39,5 +39,9 @@ namespace InfirmerieBO
             get => medic_number;
             set => medic_number = value;
         }
+        public override string ToString()
+        {
+            return medic_lib;
+        }
     }
 }
