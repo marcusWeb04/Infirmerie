@@ -60,6 +60,7 @@
             this.buttonAjouter.TabIndex = 12;
             this.buttonAjouter.Text = "Ajouter";
             this.buttonAjouter.UseVisualStyleBackColor = false;
+            this.buttonAjouter.Click += new System.EventHandler(this.buttonAjouter_Click);
             // 
             // buttonRetour
             // 
@@ -75,7 +76,7 @@
             this.buttonRetour.TabIndex = 13;
             this.buttonRetour.Text = "Retour";
             this.buttonRetour.UseVisualStyleBackColor = false;
-            this.buttonRetour.Click += new System.EventHandler(this.buttonRetour_Click_1);
+            this.buttonRetour.Click += new System.EventHandler(this.buttonRetour_Click);
             // 
             // buttonRechercher
             // 
@@ -91,10 +92,11 @@
             this.buttonRechercher.TabIndex = 20;
             this.buttonRechercher.Text = "Rechercher";
             this.buttonRechercher.UseVisualStyleBackColor = false;
-            this.buttonRechercher.Click += new System.EventHandler(this.buttonRechercher_Click_1);
+            this.buttonRechercher.Click += new System.EventHandler(this.buttonRechercher_Click);
             // 
             // textBoxRecherche
             // 
+            this.textBoxRecherche.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.textBoxRecherche.Location = new System.Drawing.Point(721, 443);
             this.textBoxRecherche.Multiline = true;
             this.textBoxRecherche.Name = "textBoxRecherche";
