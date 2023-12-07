@@ -84,27 +84,7 @@ namespace InfirmerieGUI
 
         private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var senderGrid = (DataGridView)sender;
 
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                e.RowIndex >= 0)
-            {
-                string selectedValue = dgv.SelectedRows[0].Cells["id"].Value.ToString();
-                int selectedId = 0;
-                int.TryParse(selectedValue, out selectedId);
-
-                //Recherche du médicament correspondant
-                foreach (InfirmerieBO.Medicament med in global_medicaments)
-                {
-                    if (med.id == selectedId)
-                    {
-                        //Ouverture de la modif
-                        this.Hide();
-                        Modif_Medicament modif = new Modif_Medicament(med);
-                        modif.ShowDialog();
-                    }
-                }
-            }
         }
     }
 }
