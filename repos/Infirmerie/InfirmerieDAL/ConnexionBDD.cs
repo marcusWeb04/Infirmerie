@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Runtime.Remoting.Messaging;
 using InfirmerieBO;
 
 namespace InfirmerieDAL
@@ -483,6 +485,26 @@ namespace InfirmerieDAL
                 cmd.Parameters.AddWithValue("@visite_utilisateur", visite.utilisateur);
             }
 
+            // Cas spécial : insertion d'un null en BDD
+            if (visite.comm == null)
+            {
+                cmd.Parameters.AddWithValue("@visite_comm", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@visite_comm", visite.comm);
+            }
+
+            // Cas spécial : insertion d'un null en BDD
+            if (visite.suite == null)
+            {
+                cmd.Parameters.AddWithValue("@visite_suite", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@visite_suite", visite.suite);
+            }
+
             //Execution de la requête
             res = cmd.ExecuteNonQuery();
             maConnexion.Close();
@@ -519,36 +541,73 @@ namespace InfirmerieDAL
             }
             return false;
         }
-        /*
-        public static List<Visite> getVisites(string condition)
+  
+        public static List<Visite> getVisitesDate(string cond_nom, string cond_date)
         {
             //Connexion à la BDD
-            List<Visite> res = new List<Visite>();
             SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
 
             //Création de la requête
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = maConnexion;
             cmd.CommandText =
-                "SELECT * FROM visite " +
-                "JOIN eleve ON eleve_nom = eleve_id " +
-                "WHERE eleve_prenom LIKE @cond " +
-                "OR eleve_nom LIKE @cond";
-            cmd.Parameters.AddWithValue("@cond", "%" + condition + "%");
+                "SELECT * FROM visite v " +
+                "JOIN eleve e ON v.visite_eleve = e.eleve_id " +
+                "JOIN medicament m ON v.visite_medic = m.medic_id " +
+                "WHERE (e.eleve_prenom LIKE @nom " +
+                "OR e.eleve_nom LIKE @nom ) " +
+                "AND v.visite_date = @date ";
+
+            cmd.Parameters.AddWithValue("@nom", "%" + cond_nom + "%");
+            cmd.Parameters.AddWithValue("@date", cond_date);
 
             //Execution de la requête
             SqlDataReader reader = cmd.ExecuteReader();
+            return getVisites(reader, maConnexion);
+        }
+        public static List<Visite> getVisitesMois(string cond_nom, int cond_mois)
+        {
+            //Connexion à la BDD
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+            int year = DateTime.Now.Year;
+
+            DateTime date_inf = new DateTime(year, cond_mois, 1);
+            DateTime date_sup = new DateTime(year, cond_mois+1, 1);
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "SELECT * FROM visite v " +
+                "JOIN eleve e ON v.visite_eleve = e.eleve_id " +
+                "JOIN medicament m ON v.visite_medic = m.medic_id " +
+                "JOIN classe c on e.eleve_classe = c.classe_id " +
+                "WHERE (e.eleve_prenom LIKE @nom " +
+                "OR e.eleve_nom LIKE @nom ) " +
+                "AND v.visite_date >= @date_inf " +
+                "AND v.visite_date < @date_sup ";
+
+            cmd.Parameters.AddWithValue("@nom", "%" + cond_nom + "%");
+            cmd.Parameters.AddWithValue("@date_inf", date_inf);
+            cmd.Parameters.AddWithValue("@date_sup", date_sup);
+
+            //Execution de la requête
+            SqlDataReader reader = cmd.ExecuteReader();
+            return getVisites(reader, maConnexion);
+        }
+        public static List<Visite> getVisites(SqlDataReader reader, SqlConnection maConnexion)
+        {
+            List<Visite> res = new List<Visite>();
             while (reader.Read())
             {
                 //Création d'un objet Visite et ajout de l'objet dans la liste de retour
                 int id = Int32.Parse(reader["visite_id"].ToString());
-                int visite_eleve = Int32.Parse(reader["visite_eleve"].ToString());
-                int visite_medic = Int32.Parse(reader["visite_medic"].ToString());
                 int medic_qte = Int32.Parse(reader["visite_medic_qte"].ToString());
-                string date = reader["visite_date"].ToString();
-                string heure_arrivee = reader["visite_heure_arrivee"].ToString();
-                string heure_depart = reader["visite_heure_depart"].ToString();
+                DateTime date = DateTime.Parse(reader["visite_date"].ToString());
+                TimeSpan heure_arrivee = TimeSpan.Parse(reader["visite_heure_arrivee"].ToString());
+                TimeSpan heure_depart = TimeSpan.Parse(reader["visite_heure_depart"].ToString());
                 string motif = reader["visite_motif"].ToString();
+                string comm = reader["visite_comm"].ToString();
                 bool parents_prev = false;
                 if (reader["visite_parents_prev"].ToString() == "True")
                 {
@@ -557,12 +616,39 @@ namespace InfirmerieDAL
                 }
                 string suite = reader["visite_suite"].ToString();
 
-                Visite temp = new Visite(id, new Eleve(visite_eleve), new Medicament(visite_medic), medic_qte, date, heure_arrivee, heure_depart, motif, parents_prev, suite);
+
+                //Création d'un objet Eleve et ajout de l'objet dans la liste de retour
+                int eleveid = Int32.Parse(reader["eleve_id"].ToString());
+                string nom = reader["eleve_nom"].ToString();
+                string prenom = reader["eleve_prenom"].ToString();
+                string naiss = reader["eleve_naiss"].ToString();
+                int port = Int32.Parse(reader["eleve_port"].ToString());
+                int parent_port = Int32.Parse(reader["eleve_parent_port"].ToString());
+                int classeid = Int32.Parse(reader["eleve_classe"].ToString());
+                string classelib = reader["classe_lib"].ToString(); 
+                bool tiers_temps = false;
+                if (reader["eleve_tiers_temps"].ToString() == "True")
+                {
+                    tiers_temps = true;
+                }
+                string comm_sante = reader["eleve_comm_sante"].ToString();
+
+                Eleve tempeleve = new Eleve(eleveid, nom, prenom, naiss, port, parent_port, new Classe(classeid, classelib), tiers_temps, comm_sante);
+
+
+                //Création d'un objet Medicament et ajout de l'objet dans la liste de retour
+                int medicid = Int32.Parse(reader["medic_id"].ToString());
+                string lib = reader["medic_lib"].ToString();
+
+                Medicament tempmedic = new Medicament(id, lib, 0);
+
+
+                Visite temp = new Visite(id, tempeleve, tempmedic, medic_qte, date.ToString(), heure_arrivee.ToString(), heure_depart.ToString(), motif, comm, parents_prev, suite, null);
                 res.Add(temp);
             }
             maConnexion.Close();
             return res;
         }
-        */
+
     }
 }
