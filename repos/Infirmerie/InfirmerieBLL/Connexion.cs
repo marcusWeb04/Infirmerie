@@ -31,36 +31,34 @@ namespace InfirmerieBLL
         }
 
         //Référence à la couche DAL
-        public static bool GetUtilisateur(Utilisateur uti) 
+            
+        //Utilisateur
+        public static bool GetUtilisateur(Utilisateur uti)
         {
             return ConnexionBDD.GetUtilisateur(uti);
         }
-        
 
-        //Élève
-
-
+        //Elève   
         public static bool addEleve(Eleve el)
         {
             return ConnexionBDD.addEleve(el);
-        }
-        public static bool editEleve(Eleve el)
-        {
-            return ConnexionBDD.editEleve(el);
         }
         public static bool deleteEleve(Eleve el)
         {
             return ConnexionBDD.deleteEleve(el);
         }
-        public static List<Eleve> getEleves(string condition)
+        public static bool editEleve(Eleve el)
         {
-            return ConnexionBDD.getEleves(condition);
+            return ConnexionBDD.editEleve(el);
+        }
+        public static List<Eleve> getEleves(string cond)
+        {
+            return ConnexionBDD.getEleves(cond);
         }
         public static List<Classe> getClasses()
         {
             return ConnexionBDD.getClasses();
         }
-
 
         //Médicament
 
@@ -81,7 +79,7 @@ namespace InfirmerieBLL
             return ConnexionBDD.getMedicaments(cond);
         }
 
-        //BLL
+
         public static bool addVisite(Visite vi)
         {
             return ConnexionBDD.addVisite(vi);
@@ -94,49 +92,13 @@ namespace InfirmerieBLL
         {
             return ConnexionBDD.editVisite(vi);
         }
-
-        //Contrôles de saisie
-        public static bool saisieTexte(string input)
+        public static List<Visite> getVisitesDate(string cond, string cond2)
         {
-            //Liste de caractères autorisés
-            List<char> checklist = new List<char>
-                { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-                'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-                '-','é','è','ê','ë','É','È','Ê','Ë' };
-            foreach (char c in input)
-            {
-                //Si un caractère qui n'est pas dans la liste est trouvé, false
-                if (!checklist.Contains(c)) 
-                {
-                    return false;
-                }
-            }
-            return true;
+            return ConnexionBDD.getVisitesDate(cond, cond2);
         }
-        public static bool saisieTel(string input)
+        public static List<Visite> getVisitesMois(string cond, int cond2)
         {
-            int length = input.Length;
-            //Liste de caractères autorisés
-            List<char> checklist = new List<char>
-                { '0','1','2','3','4','5','6','7','8','9','+',' '};
-            foreach (char c in input)
-            {
-                if (!checklist.Contains(c))
-                {
-                    //Si un caractère qui n'est pas dans la liste est trouvé, false
-                    return false;
-                }
-                if (c == ' ' || c == '+')
-                {
-                    //On déduit les espaces et + de la longueur du n° pour vérifier la longeur avec précision
-                    length -= 1;
-                }
-            }
-            if (length < 10)
-            {
-                return false;
-            }
-            return true;
+            return ConnexionBDD.getVisitesMois(cond, cond2);
         }
     }
 }
