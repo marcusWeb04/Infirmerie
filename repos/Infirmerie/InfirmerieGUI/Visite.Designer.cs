@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.buttonRechercher = new System.Windows.Forms.Button();
-            this.textBoxRecherche = new System.Windows.Forms.TextBox();
+            this.textBoxRechercheDate = new System.Windows.Forms.TextBox();
             this.labelBienvenue = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.comboBoxClasse = new System.Windows.Forms.ComboBox();
+            this.comboBoxMois = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxRechercheNom = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonRetour = new System.Windows.Forms.Button();
             this.labelRecherche = new System.Windows.Forms.Label();
@@ -55,14 +55,16 @@
             this.buttonRechercher.TabIndex = 24;
             this.buttonRechercher.Text = "Rechercher";
             this.buttonRechercher.UseVisualStyleBackColor = false;
+            this.buttonRechercher.Click += new System.EventHandler(this.buttonRechercher_Click);
             // 
-            // textBoxRecherche
+            // textBoxRechercheDate
             // 
-            this.textBoxRecherche.Location = new System.Drawing.Point(367, 374);
-            this.textBoxRecherche.Multiline = true;
-            this.textBoxRecherche.Name = "textBoxRecherche";
-            this.textBoxRecherche.Size = new System.Drawing.Size(262, 64);
-            this.textBoxRecherche.TabIndex = 25;
+            this.textBoxRechercheDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxRechercheDate.Location = new System.Drawing.Point(367, 374);
+            this.textBoxRechercheDate.Multiline = true;
+            this.textBoxRechercheDate.Name = "textBoxRechercheDate";
+            this.textBoxRechercheDate.Size = new System.Drawing.Size(262, 64);
+            this.textBoxRechercheDate.TabIndex = 25;
             // 
             // labelBienvenue
             // 
@@ -79,28 +81,43 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.panel2.Controls.Add(this.comboBoxClasse);
+            this.panel2.Controls.Add(this.comboBoxMois);
             this.panel2.Controls.Add(this.labelBienvenue);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.textBoxRechercheNom);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.textBoxRecherche);
+            this.panel2.Controls.Add(this.textBoxRechercheDate);
             this.panel2.Controls.Add(this.buttonRechercher);
             this.panel2.Controls.Add(this.buttonRetour);
             this.panel2.Controls.Add(this.labelRecherche);
-            this.panel2.Location = new System.Drawing.Point(103, 92);
+            this.panel2.Location = new System.Drawing.Point(94, 69);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1235, 739);
             this.panel2.TabIndex = 26;
             // 
-            // comboBoxClasse
+            // comboBoxMois
             // 
-            this.comboBoxClasse.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.comboBoxClasse.FormattingEnabled = true;
-            this.comboBoxClasse.Location = new System.Drawing.Point(657, 389);
-            this.comboBoxClasse.Name = "comboBoxClasse";
-            this.comboBoxClasse.Size = new System.Drawing.Size(235, 39);
-            this.comboBoxClasse.TabIndex = 45;
+            this.comboBoxMois.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.comboBoxMois.FormattingEnabled = true;
+            this.comboBoxMois.IntegralHeight = false;
+            this.comboBoxMois.Items.AddRange(new object[] {
+            "(Aucun)",
+            "Janvier",
+            "Février",
+            "Mars",
+            "Avril",
+            "Mai",
+            "Juin",
+            "Juillet",
+            "Août",
+            "Septembre",
+            "Octobre",
+            "Novembre",
+            "Décembre"});
+            this.comboBoxMois.Location = new System.Drawing.Point(657, 389);
+            this.comboBoxMois.Name = "comboBoxMois";
+            this.comboBoxMois.Size = new System.Drawing.Size(235, 39);
+            this.comboBoxMois.TabIndex = 45;
             // 
             // label2
             // 
@@ -114,13 +131,14 @@
             this.label2.Text = "Nom :";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // textBox2
+            // textBoxRechercheNom
             // 
-            this.textBox2.Location = new System.Drawing.Point(952, 374);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(262, 64);
-            this.textBox2.TabIndex = 28;
+            this.textBoxRechercheNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxRechercheNom.Location = new System.Drawing.Point(952, 374);
+            this.textBoxRechercheNom.Multiline = true;
+            this.textBoxRechercheNom.Name = "textBoxRechercheNom";
+            this.textBoxRechercheNom.Size = new System.Drawing.Size(262, 64);
+            this.textBoxRechercheNom.TabIndex = 28;
             // 
             // label1
             // 
@@ -179,14 +197,14 @@
         #endregion
 
         private System.Windows.Forms.Button buttonRechercher;
-        private System.Windows.Forms.TextBox textBoxRecherche;
+        private System.Windows.Forms.TextBox textBoxRechercheDate;
         private System.Windows.Forms.Label labelBienvenue;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button buttonRetour;
         private System.Windows.Forms.Label labelRecherche;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxRechercheNom;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBoxClasse;
+        private System.Windows.Forms.ComboBox comboBoxMois;
     }
 }

@@ -18,6 +18,7 @@ namespace InfirmerieGUI
         public Visite()
         {
             InitializeComponent();
+            comboBoxMois.SelectedIndex = 0;
         }
 
         private void buttonRetour_Click(object sender, EventArgs e)
@@ -26,6 +27,13 @@ namespace InfirmerieGUI
             this.Hide();
             Accueil am = new Accueil();
             am.Show();
+        }
+
+        private void buttonRechercher_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ListeVisite liste = new ListeVisite(textBoxRechercheNom.Text,textBoxRechercheDate.Text, comboBoxMois.SelectedIndex);
+            liste.ShowDialog();
         }
     }
 }
