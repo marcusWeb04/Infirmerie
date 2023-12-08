@@ -25,6 +25,8 @@ namespace InfirmerieGUI
             textBoxClasse.Text = el.classe.lib;
             textBoxAge.Text = el.naiss;
 
+            textBoxDate.Text = DateTime.Today.ToString().Substring(0,10);
+
             //Ajout d'un médicament 'Aucun' 
             InfirmerieBO.Medicament nomed = new InfirmerieBO.Medicament(0,"Aucun", 0);
             List<InfirmerieBO.Medicament> nomedlist = new List<InfirmerieBO.Medicament>();
