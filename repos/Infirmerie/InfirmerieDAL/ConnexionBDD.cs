@@ -109,6 +109,13 @@ namespace InfirmerieDAL
             int res;
             SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
 
+            //Conversion de la date
+            DateTime? naisscv = dateFormat(eleve.naiss);
+            if (naisscv == null)
+            {
+                return false;
+            }
+
             //Création de la requête
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = maConnexion;
@@ -117,7 +124,7 @@ namespace InfirmerieDAL
                 "VALUES (@nom, @prenom, @naiss, @port, @parent_port, @classe, @tiers_temps, @comm_sante)";
             cmd.Parameters.AddWithValue("@nom", eleve.nom);
             cmd.Parameters.AddWithValue("@prenom", eleve.prenom);
-            cmd.Parameters.AddWithValue("@naiss", eleve.naiss);
+            cmd.Parameters.AddWithValue("@naiss", naisscv);
             cmd.Parameters.AddWithValue("@port", eleve.port);
             cmd.Parameters.AddWithValue("@parent_port", eleve.parent_port);
             cmd.Parameters.AddWithValue("@classe", eleve.classe.id);
@@ -172,6 +179,13 @@ namespace InfirmerieDAL
             int res;
             SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
 
+            //Conversion de la date
+            DateTime? naisscv = dateFormat(eleve.naiss);
+            if (naisscv == null)
+            {
+                return false;
+            }
+
             //Création de la requête
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = maConnexion;
@@ -188,7 +202,7 @@ namespace InfirmerieDAL
             cmd.Parameters.AddWithValue("@id", eleve.id);
             cmd.Parameters.AddWithValue("@nom", eleve.nom);
             cmd.Parameters.AddWithValue("@prenom", eleve.prenom);
-            cmd.Parameters.AddWithValue("@naiss", eleve.naiss);
+            cmd.Parameters.AddWithValue("@naiss", naisscv);
             cmd.Parameters.AddWithValue("@port", eleve.port);
             cmd.Parameters.AddWithValue("@parent_port", eleve.parent_port);
             cmd.Parameters.AddWithValue("@classe", eleve.classe.id);
@@ -418,61 +432,36 @@ namespace InfirmerieDAL
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = maConnexion;
             cmd.CommandText =
-                "UPDATE visite SET [visite_eleve] = @visite_eleve," +
-                "[visite_medic] = @visite_medic," +
-                "[visite_medic_qte] = @visite_medic_qte," +
-                "[visite_date] = @visite_date," +
-                "[visite_heure_arrivee] = @visite_heure_arrivee," +
-                "[visite_heure_depart] = @visite_heure_depart," +
-                "[visite_motif] = @visite_motif," +
-                "[visite_comm] = @visite_comm, " +
-                "[visite_parents_prev] = @visite_parents_prev, " +
-                "[visite_suite] = @visite_suite, " +
-                "[visite_utilisateur] = @visite_utilisateur " +
+                "INSERT INTO visite (visite_eleve, visite_medic, visite_medic_qte, visite_date, visite_heure_arrivee, visite_heure_depart, " +
+                "visite_motif, visite_comm, visite_parents_prev, visite_suite, visite_utilisateur) " +
+                "VALUES (@visite_eleve, @visite_medic, @visite_medic_qte, @visite_date, @visite_heure_arrivee, @visite_heure_depart, " +
+                "@visite_motif, @visite_comm, @visite_parents_prev, @visite_suite, @visite_utilisateur);";
 
-                "WHERE [visite_id] = @id";
             cmd.Parameters.AddWithValue("@visite_eleve", visite.eleve.id);
-            cmd.Parameters.AddWithValue("@visite_medic", visite.medic.id);
-            cmd.Parameters.AddWithValue("@visite_medic_qte", visite.medic_qte);
             cmd.Parameters.AddWithValue("@visite_date", datecv);
             cmd.Parameters.AddWithValue("@visite_heure_arrivee", TimeSpan.Parse(visite.heure_arrivee));
             cmd.Parameters.AddWithValue("@visite_heure_depart", TimeSpan.Parse(visite.heure_depart));
             cmd.Parameters.AddWithValue("@visite_motif", visite.motif);
-            cmd.Parameters.AddWithValue("@visite_comm", visite.comm);
             cmd.Parameters.AddWithValue("@visite_parents_prev", visite.parents_prev);
             cmd.Parameters.AddWithValue("@visite_suite", visite.suite);
-
             cmd.Parameters.AddWithValue("@id", visite.id);
 
-            // Cas spécial : insertion d'un null en BDD
+            // Cas spécial : insertion de null en BDD
             if (visite.utilisateur == null)
-            {
-                cmd.Parameters.AddWithValue("@visite_utilisateur", DBNull.Value);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@visite_utilisateur", visite.utilisateur);
-            }
+            { cmd.Parameters.AddWithValue("@visite_utilisateur", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@visite_utilisateur", visite.utilisateur.login); }
 
-            // Cas spécial : insertion d'un null en BDD
-            if (visite.comm == null)
-            {
-                cmd.Parameters.AddWithValue("@visite_comm", DBNull.Value);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@visite_comm", visite.comm);
-            }
+            if (visite.comm == "")
+            { cmd.Parameters.AddWithValue("@visite_comm", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@visite_comm", visite.comm); }
 
-            // Cas spécial : insertion d'un null en BDD
-            if (visite.suite == null)
-            {
-                cmd.Parameters.AddWithValue("@visite_suite", DBNull.Value);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@visite_suite", visite.suite);
-            }
+            if (visite.medic == null)
+            { cmd.Parameters.AddWithValue("@visite_medic", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@visite_medic", visite.medic.id); }
+
+            if (visite.medic_qte == null)
+            { cmd.Parameters.AddWithValue("@visite_medic_qte", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@visite_medic_qte", visite.medic_qte); }
 
             //Execution de la requête
             res = cmd.ExecuteNonQuery();
@@ -487,6 +476,7 @@ namespace InfirmerieDAL
 
         public static bool editVisite(Visite visite)
         {
+            //Connexion à la BDD
             int res;
             SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
 
@@ -515,57 +505,30 @@ namespace InfirmerieDAL
 
                 "WHERE [visite_id] = @id";
             cmd.Parameters.AddWithValue("@visite_eleve", visite.eleve.id);
-            cmd.Parameters.AddWithValue("@visite_medic", visite.medic.id);
-            cmd.Parameters.AddWithValue("@visite_medic_qte", visite.medic_qte);
-            cmd.Parameters.AddWithValue("@visite_date", visite.date);
+            cmd.Parameters.AddWithValue("@visite_date", datecv);
             cmd.Parameters.AddWithValue("@visite_heure_arrivee", TimeSpan.Parse(visite.heure_arrivee));
             cmd.Parameters.AddWithValue("@visite_heure_depart", TimeSpan.Parse(visite.heure_depart));
             cmd.Parameters.AddWithValue("@visite_motif", visite.motif);
-            cmd.Parameters.AddWithValue("@visite_comm", visite.comm);
             cmd.Parameters.AddWithValue("@visite_parents_prev", visite.parents_prev);
             cmd.Parameters.AddWithValue("@visite_suite", visite.suite);
-
             cmd.Parameters.AddWithValue("@id", visite.id);
 
-            // Cas spécial : insertion d'un null en BDD
+            // Cas spécial : insertion de null en BDD
             if (visite.utilisateur == null)
-            {
-                cmd.Parameters.AddWithValue("@visite_utilisateur", DBNull.Value);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@visite_utilisateur", visite.utilisateur);
-            }
+            { cmd.Parameters.AddWithValue("@visite_utilisateur", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@visite_utilisateur", visite.utilisateur.login); }
 
-            // Cas spécial : insertion d'un null en BDD
+            if (visite.comm == "")
+            { cmd.Parameters.AddWithValue("@visite_comm", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@visite_comm", visite.comm); }
+
             if (visite.medic == null)
-            {
-                cmd.Parameters.AddWithValue("@visite_medic", DBNull.Value);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@visite_medic", visite.medic.id);
-            }
+            { cmd.Parameters.AddWithValue("@visite_medic", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@visite_medic", visite.medic.id); }
 
-            // Cas spécial : insertion d'un null en BDD
             if (visite.medic_qte == null)
-            {
-                cmd.Parameters.AddWithValue("@visite_medic_qte", DBNull.Value);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@visite_medic_qte", visite.medic_qte);
-            }
-
-            // Cas spécial : insertion d'un null en BDD
-            if (visite.comm == null)
-            {
-                cmd.Parameters.AddWithValue("@visite_utilisateur", DBNull.Value);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@visite_utilisateur", visite.comm);
-            }
+            { cmd.Parameters.AddWithValue("@visite_medic_qte", DBNull.Value); }
+            else { cmd.Parameters.AddWithValue("@visite_medic_qte", visite.medic_qte); }
 
             //Execution de la requête
             res = cmd.ExecuteNonQuery();
