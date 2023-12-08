@@ -27,7 +27,7 @@ namespace InfirmerieBO
             this.eleve_id = eleve_id;
             this.eleve_nom = eleve_nom;
             this.eleve_prenom = eleve_prenom;
-            this.eleve_naiss = eleve_naiss;
+            this.eleve_naiss = eleve_naiss.Substring(0,10);
             this.eleve_port = eleve_port;
             this.eleve_parent_port = eleve_parent_port;
             this.eleve_classe = eleve_classe;
@@ -45,5 +45,10 @@ namespace InfirmerieBO
         public Classe classe { get => eleve_classe; set => eleve_classe = value; }
         public bool tiers_temps { get => eleve_tiers_temps; set => eleve_tiers_temps = value; }
         public string? comm_sante { get => eleve_comm_sante; set => eleve_comm_sante = value; }
+
+        public override string ToString()
+        {
+            return eleve_nom + " " + eleve_prenom;
+        }
     }
 }
