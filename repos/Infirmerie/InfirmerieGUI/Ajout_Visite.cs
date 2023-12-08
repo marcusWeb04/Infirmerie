@@ -25,7 +25,7 @@ namespace InfirmerieGUI
             textBoxClasse.Text = el.classe.lib;
             textBoxAge.Text = el.naiss;
 
-            textBoxDate.Text = DateTime.Today.ToString()
+            textBoxDate.Text = DateTime.Today.ToString().Substring(0,10);
 
             //Ajout d'un médicament 'Aucun' 
             InfirmerieBO.Medicament nomed = new InfirmerieBO.Medicament(0,"Aucun", 0);
@@ -92,6 +92,13 @@ namespace InfirmerieGUI
         private void Ajout_Visite_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonRetour_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Visite v = new Visite();
+            v.ShowDialog();
         }
     }
 }

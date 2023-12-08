@@ -345,6 +345,7 @@
             this.buttonRetour.TabIndex = 56;
             this.buttonRetour.Text = "Retour";
             this.buttonRetour.UseVisualStyleBackColor = false;
+            this.buttonRetour.Click += new System.EventHandler(this.buttonRetour_Click);
             // 
             // buttonDummyAdd
             // 
