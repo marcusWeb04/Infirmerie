@@ -29,9 +29,9 @@ namespace InfirmerieBO
             this.visite_eleve = visite_eleve;
             this.visite_medic = visite_medic;
             this.visite_medic_qte = visite_medic_qte;
-            this.visite_date = visite_date;
-            this.visite_heure_arrivee = visite_heure_arrivee;
-            this.visite_heure_depart = visite_heure_depart;
+            this.visite_date = visite_date.Substring(0,10);
+            this.visite_heure_arrivee = visite_heure_arrivee.Substring(0,5);
+            this.visite_heure_depart = visite_heure_depart.Substring(0,5);
             this.visite_motif = visite_motif;
             this.visite_comm = visite_comm;
             this.visite_parents_prev = visite_parents_prev;
