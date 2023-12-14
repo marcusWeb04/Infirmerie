@@ -571,6 +571,9 @@ namespace InfirmerieDAL
             //Connexion à la BDD
             SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
 
+            //Conversion de la date
+            DateTime? datecv = dateFormat(cond_date);
+
             //Création de la requête
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = maConnexion;
@@ -583,7 +586,7 @@ namespace InfirmerieDAL
                 "AND v.visite_date = @date ";
 
             cmd.Parameters.AddWithValue("@nom", "%" + cond_nom + "%");
-            cmd.Parameters.AddWithValue("@date", cond_date);
+            cmd.Parameters.AddWithValue("@date", datecv);
 
             //Execution de la requête
             SqlDataReader reader = cmd.ExecuteReader();
@@ -630,7 +633,7 @@ namespace InfirmerieDAL
             cmd.CommandText =
                 "SELECT * FROM visite v " +
                 "JOIN eleve e ON v.visite_eleve = e.eleve_id " +
-                "JOIN medicament m ON v.visite_medic = m.medic_id " +
+                "LEFT JOIN medicament m ON v.visite_medic = m.medic_id " +
                 "JOIN classe c on e.eleve_classe = c.classe_id " +
                 "WHERE (e.eleve_prenom LIKE @nom " +
                 "OR e.eleve_nom LIKE @nom ) ";
@@ -648,7 +651,6 @@ namespace InfirmerieDAL
             {
                 //Création d'un objet Visite et ajout de l'objet dans la liste de retour
                 int id = Int32.Parse(reader["visite_id"].ToString());
-                int medic_qte = Int32.Parse(reader["visite_medic_qte"].ToString());
                 DateTime date = DateTime.Parse(reader["visite_date"].ToString());
                 TimeSpan heure_arrivee = TimeSpan.Parse(reader["visite_heure_arrivee"].ToString());
                 TimeSpan heure_depart = TimeSpan.Parse(reader["visite_heure_depart"].ToString());
@@ -660,6 +662,16 @@ namespace InfirmerieDAL
                     parents_prev = true;
 
                 }
+                int medic_qte;
+                if (reader["visite_medic_qte"].ToString() == "")
+                {
+                    medic_qte = 0;
+                }
+                else
+                {
+                    medic_qte = Int32.Parse(reader["visite_medic_qte"].ToString());
+                }
+                
                 string suite = reader["visite_suite"].ToString();
 
 
@@ -683,10 +695,20 @@ namespace InfirmerieDAL
 
 
                 //Création d'un objet Medicament et ajout de l'objet dans la liste de retour
-                int medicid = Int32.Parse(reader["medic_id"].ToString());
-                string lib = reader["medic_lib"].ToString();
+                Medicament tempmedic;
+                if (reader["visite_medic"].ToString() == "")
+                {
+                     tempmedic = null;
+                }
+                else
+                {
+                    int medid = Int32.Parse(reader["medic_id"].ToString());
+                    string medlib = reader["medic_lib"].ToString();
+                    tempmedic = new Medicament(medid, medlib, 0);
+                }
+                
 
-                Medicament tempmedic = new Medicament(id, lib, 0);
+                
 
 
                 Visite temp = new Visite(id, tempeleve, tempmedic, medic_qte, date.ToString(), heure_arrivee.ToString(), heure_depart.ToString(), motif, comm, parents_prev, suite, null);
@@ -697,6 +719,207 @@ namespace InfirmerieDAL
         }
 
 
+
+
+        // Statistiques
+
+
+
+
+        public static int getStatsEleve()
+        {
+            //Connexion à la BDD
+            int res = 0;
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "SELECT COUNT(*) AS count FROM eleve;";
+
+            //Execution de la requête
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+
+            res = Int32.Parse(reader["count"].ToString());
+
+            maConnexion.Close();
+            return res;
+        }
+        public static int getStatsVisite()
+        {
+            //Connexion à la BDD
+            int res = 0;
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "SELECT COUNT(*) AS count FROM visite;";
+
+            //Execution de la requête
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+
+            res = Int32.Parse(reader["count"].ToString());
+
+            maConnexion.Close();
+            return res;
+        }
+        public static int getStatsVisite(string annee)
+        {
+            //Connexion à la BDD
+            int res = 0;
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            DateTime? dateinf = dateFormat("01/09/"+annee);
+            DateTime? datesup = dateFormat("30/08/"+(Int32.Parse(annee)+1).ToString());
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "SELECT COUNT(*) AS count FROM visite " +
+                "WHERE visite_date > @dateinf " +
+                "AND visite_date < @datesup;";
+            cmd.Parameters.AddWithValue("@dateinf", dateinf);
+            cmd.Parameters.AddWithValue("@datesup", datesup);
+
+            //Execution de la requête
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+
+            res = Int32.Parse(reader["count"].ToString());
+
+            maConnexion.Close();
+            return res;
+        }
+        public static float getStatsTempsVisite()
+        {
+            //Connexion à la BDD
+            float res = 0;
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "SELECT CAST(SUM(DATEDIFF(minute, CAST(visite_heure_arrivee as time), CAST(visite_heure_depart as time))) as float)/COUNT(*) as count FROM visite;";
+
+            //Execution de la requête
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+
+            res = float.Parse(reader["count"].ToString());
+
+            maConnexion.Close();
+            return res;
+        }
+        public static float getStatsTempsVisite(string annee)
+        {
+            //Connexion à la BDD
+            float res = 0;
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            DateTime? dateinf = dateFormat("01/09/" + annee);
+            DateTime? datesup = dateFormat("30/08/" + (Int32.Parse(annee) + 1).ToString());
+
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "SELECT CAST(SUM(DATEDIFF(minute, CAST(visite_heure_arrivee as time), CAST(visite_heure_depart as time))) as float)/COUNT(*) as count " +
+                "FROM visite " +
+                "WHERE visite_date > @dateinf " +
+                "AND visite_date < @datesup;";
+            cmd.Parameters.AddWithValue("@dateinf", dateinf);
+            cmd.Parameters.AddWithValue("@datesup", datesup);
+
+            //Execution de la requête
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+
+            res = float.Parse(reader["count"].ToString());
+
+            maConnexion.Close();
+            return res;
+        }
+        public static int getStatsMedic()
+        {
+            //Connexion à la BDD
+            int res = 0;
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "SELECT COUNT(*) AS count FROM medicament;";
+
+            //Execution de la requête
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+
+            res = Int32.Parse(reader["count"].ToString());
+
+            maConnexion.Close();
+            return res;
+        }
+        public static float getStatsMedicVisite()
+        {
+            //Connexion à la BDD
+            float res = 0;
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "SELECT CAST (SUM(v.visite_medic_qte) as FLOAT)/COUNT(*) AS count " +
+                "FROM visite v;";
+
+            //Execution de la requête
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+
+            res = float.Parse(reader["count"].ToString());
+
+            maConnexion.Close();
+            return res;
+        }
+        public static float getStatsMedicVisite(string annee)
+        {
+            //Connexion à la BDD
+            float res = 0;
+            SqlConnection maConnexion = ConnexionBDD.GetConnexion().GetSqlConnexion();
+
+            DateTime? dateinf = dateFormat("01/09/" + annee);
+            DateTime? datesup = dateFormat("30/08/" + (Int32.Parse(annee) + 1).ToString());
+
+
+            //Création de la requête
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = maConnexion;
+            cmd.CommandText =
+                "SELECT CAST (SUM(v.visite_medic_qte) as FLOAT)/COUNT(*) AS count " +
+                "FROM visite v " +
+                "WHERE visite_date > @dateinf " +
+                "AND visite_date < @datesup;";
+            cmd.Parameters.AddWithValue("@dateinf", dateinf);
+            cmd.Parameters.AddWithValue("@datesup", datesup);
+
+            //Execution de la requête
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+
+            res = float.Parse(reader["count"].ToString());
+
+            maConnexion.Close();
+            return res;
+        }
 
 
         // Fonctions supplémentaires

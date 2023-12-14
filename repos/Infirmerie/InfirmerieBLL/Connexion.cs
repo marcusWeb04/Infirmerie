@@ -108,6 +108,33 @@ namespace InfirmerieBLL
             return ConnexionBDD.getVisitesNom(cond);
         }
 
+        //Stats
+
+        public static List<float> getStats()
+        {
+            float stateleve = ConnexionBDD.getStatsEleve();
+            float statvisite = ConnexionBDD.getStatsVisite();
+            float statvisiteeleve = statvisite / stateleve;
+            float statmedic = ConnexionBDD.getStatsMedic();
+            float statmedicvisite = ConnexionBDD.getStatsMedicVisite();
+            float stattempsvisite = ConnexionBDD.getStatsTempsVisite();
+
+            return (new List<float>() 
+            { stateleve, statvisite, statvisiteeleve, statmedic, statmedicvisite, stattempsvisite } );
+        }
+        public static List<float> getStats(string annee)
+        {
+            float stateleve = ConnexionBDD.getStatsEleve();
+            float statvisite = ConnexionBDD.getStatsVisite(annee);
+            float statvisiteeleve = statvisite / stateleve;
+            float statmedic = ConnexionBDD.getStatsMedic();
+            float statmedicvisite = ConnexionBDD.getStatsMedicVisite(annee);
+            float stattempsvisite = ConnexionBDD.getStatsTempsVisite(annee);
+
+            return (new List<float>()
+            { stateleve, statvisite, statvisiteeleve, statmedic, statmedicvisite, stattempsvisite });
+        }
+
         //Fonctions supplémentaires
 
         public static bool validateName(string name)
