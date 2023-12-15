@@ -34,6 +34,7 @@
             this.buttonDeconnexion = new System.Windows.Forms.Button();
             this.labelBienvenue = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonStatistiques = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonVisites
@@ -50,7 +51,7 @@
             this.buttonVisites.TabIndex = 12;
             this.buttonVisites.Text = "Visites";
             this.buttonVisites.UseVisualStyleBackColor = false;
-            this.buttonVisites.Click += new System.EventHandler(this.buttonVisites_Click);
+            this.buttonVisites.Click += new System.EventHandler(this.buttonVisites_Click_1);
             // 
             // buttonEleves
             // 
@@ -91,14 +92,14 @@
             this.buttonDeconnexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeconnexion.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDeconnexion.ForeColor = System.Drawing.Color.White;
-            this.buttonDeconnexion.Location = new System.Drawing.Point(735, 475);
+            this.buttonDeconnexion.Location = new System.Drawing.Point(483, 616);
             this.buttonDeconnexion.Margin = new System.Windows.Forms.Padding(0);
             this.buttonDeconnexion.Name = "buttonDeconnexion";
             this.buttonDeconnexion.Size = new System.Drawing.Size(323, 80);
             this.buttonDeconnexion.TabIndex = 9;
             this.buttonDeconnexion.Text = "Déconnexion";
             this.buttonDeconnexion.UseVisualStyleBackColor = false;
-            this.buttonDeconnexion.Click += new System.EventHandler(this.buttonDeconnexion_Click_1);
+            this.buttonDeconnexion.Click += new System.EventHandler(this.buttonDeconnexion_Click);
             // 
             // labelBienvenue
             // 
@@ -121,21 +122,37 @@
             this.panel1.Size = new System.Drawing.Size(1235, 739);
             this.panel1.TabIndex = 13;
             // 
+            // buttonStatistiques
+            // 
+            this.buttonStatistiques.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(47)))), ((int)(((byte)(104)))));
+            this.buttonStatistiques.FlatAppearance.BorderSize = 0;
+            this.buttonStatistiques.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStatistiques.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonStatistiques.ForeColor = System.Drawing.Color.White;
+            this.buttonStatistiques.Location = new System.Drawing.Point(735, 475);
+            this.buttonStatistiques.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonStatistiques.Name = "buttonStatistiques";
+            this.buttonStatistiques.Size = new System.Drawing.Size(323, 80);
+            this.buttonStatistiques.TabIndex = 14;
+            this.buttonStatistiques.Text = "Statistiques";
+            this.buttonStatistiques.UseVisualStyleBackColor = false;
+            this.buttonStatistiques.Click += new System.EventHandler(this.buttonStatistiques_Click);
+            // 
             // Accueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1422, 877);
+            this.Controls.Add(this.buttonDeconnexion);
+            this.Controls.Add(this.buttonStatistiques);
             this.Controls.Add(this.buttonVisites);
             this.Controls.Add(this.buttonEleves);
             this.Controls.Add(this.buttonMedicaments);
-            this.Controls.Add(this.buttonDeconnexion);
             this.Controls.Add(this.labelBienvenue);
             this.Controls.Add(this.panel1);
             this.Name = "Accueil";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Accueil";
-            this.Load += new System.EventHandler(this.Accueil_Load);
             this.ResumeLayout(false);
 
         }
@@ -148,5 +165,6 @@
         private System.Windows.Forms.Button buttonDeconnexion;
         private System.Windows.Forms.Label labelBienvenue;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button buttonStatistiques;
     }
 }

@@ -27,17 +27,9 @@ namespace InfirmerieGUI
             labelBienvenue.Text = "Accueil";
         }
 
-        private void Accueil_Load(object sender, EventArgs e)
-        {
-
-        }
-        private void buttonDeconnexion_Click(object sender, EventArgs e)
-        {
-          
-        }
-
         private void buttonEleves_Click(object sender, EventArgs e)
         {
+            //Affichage du formulaire Élève
             this.Hide();
             Eleve Eleve = new Eleve();
             Eleve.Show();
@@ -45,25 +37,37 @@ namespace InfirmerieGUI
 
         private void buttonMedicaments_Click(object sender, EventArgs e)
         {
+            //Affichage du formulaire Medicament
             this.Hide();
-            Medicament medicament = new Medicament();
-            medicament.Show();
+            Medicament med = new Medicament();
+            med.Show();
         }
 
-        private void buttonDeconnexion_Click_1(object sender, EventArgs e)
+        private void buttonDeconnexion_Click(object sender, EventArgs e)
         {
-            //Affiche du formulaire Connexion
+            //Affichage du formulaire Connexion
             this.Hide();
             Connexion Connexion = new Connexion();
             Connexion.ShowDialog();
         }
-
         private void buttonVisites_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void buttonVisites_Click_1(object sender, EventArgs e)
         {
             //Retour vers la page d'accueil
             this.Hide();
             Visite am = new Visite();
             am.ShowDialog();
+        }
+
+        private void buttonStatistiques_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Statistique st = new Statistique();
+            st.ShowDialog();
         }
     }
 }
