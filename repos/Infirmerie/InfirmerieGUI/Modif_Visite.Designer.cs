@@ -69,6 +69,7 @@
             this.buttonDummyAdd.TabIndex = 81;
             this.buttonDummyAdd.Text = "Ajouter";
             this.buttonDummyAdd.UseVisualStyleBackColor = false;
+            this.buttonDummyAdd.Click += new System.EventHandler(this.buttonDummyAdd_Click);
             // 
             // buttonRetour
             // 
@@ -84,6 +85,7 @@
             this.buttonRetour.TabIndex = 80;
             this.buttonRetour.Text = "Retour";
             this.buttonRetour.UseVisualStyleBackColor = false;
+            this.buttonRetour.Click += new System.EventHandler(this.buttonRetour_Click_1);
             // 
             // checkBoxParentsPrev
             // 
@@ -376,6 +378,7 @@
             this.buttonDelete.TabIndex = 82;
             this.buttonDelete.Text = "Supprimer";
             this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // Modif_Visite
             // 
@@ -408,8 +411,8 @@
             this.Controls.Add(this.textBoxPrenom);
             this.Controls.Add(this.textBoxNom);
             this.Name = "Modif_Visite";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modif_Visite";
-            this.Load += new System.EventHandler(this.Modif_Visite_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -25,65 +25,127 @@ namespace InfirmerieGUI
 
         public Modif_Visite(InfirmerieBO.Visite vi)
         {
+            //Initialistion des données
             InitializeComponent();
-            ConnexionBLL.SetchaineConnexion(ConfigurationManager.ConnectionStrings["Infirmerie"]);
-            comboBoxClasse.DataSource = ConnexionBLL.getClasses();
+            textBoxNom.Text = vi.eleve.nom;
+            textBoxPrenom.Text = vi.eleve.prenom;
+            textBoxClasse.Text = vi.eleve.classe.lib;
+            textBoxAge.Text = vi.eleve.naiss;
 
-            //Préremplissage
-            textBoxNom.Text = vi.nom;
-            textBoxPrenom.Text = el.prenom;
-            comboBoxClasse.SelectedItem = el.classe;
-            textBoxTelEleve.Text = el.port.ToString();
-            textBoxTelParent.Text = el.parent_port.ToString();
-            textBoxComSante.Text = el.comm_sante;
-            textBoxDateDeNaissance.Text = el.naiss;
-            checkBoxTiersTemps.Checked = el.tiers_temps;
+            textBoxDate.Text = vi.date.ToString();
+            textBoxHeureArrivee.Text = vi.heure_arrivee;
+            textBoxHeureDepart.Text = vi.heure_depart;
+            textBoxMotif.Text = vi.motif;
+            textBoxComm.Text = vi.comm;
+            textBoxQteMedic.Text = vi.medic_qte.ToString();
 
-            global_el = el;
-        }
+            checkBoxParentsPrev.Checked = vi.parents_prev;
 
-        private void buttonRetour_Click(object sender, EventArgs e)
-        {
-        }
+            //Ajout d'un médicament 'Aucun' 
+            InfirmerieBO.Medicament nomed = new InfirmerieBO.Medicament(0, "(Aucun)", 0);
+            List<InfirmerieBO.Medicament> nomedlist = new List<InfirmerieBO.Medicament>();
+            nomedlist.Add(nomed);
 
-        private void buttonDummyAdd_Click_1(object sender, EventArgs e)
-        {
-            //Récupération des valeurs saisies
-            string nom = textBoxNom.Text;
-            string prenom = textBoxPrenom.Text;
-            string dateDeNaissance = textBoxDateDeNaissance.Text;
-            bool tiersTemps = checkBoxTiersTemps.Checked;
-            string commSante = textBoxComSante.Text;
+            //Génération de la liste des médicaments
+            comboBoxMedic.DataSource = nomedlist.Concat(ConnexionBLL.getMedicaments("")).ToList();
+            //InfirmerieBO.Medicament selectedMedic = ConnexionBLL.getMedicaments("").Find(med => med == vi.medic);
 
-            int teleleve;
-            int telparent;
-            string value = textBoxTelEleve.Text;
-            int.TryParse(value, out teleleve);
-            value = textBoxTelParent.Text;
-            int.TryParse(value, out telparent);
-
-            object classeobj = comboBoxClasse.SelectedItem;
-            Classe classe = classeobj as Classe;
-
-
-            //Vérifications
-            if (nom == "" || prenom == "" || classe.id == 0 || dateDeNaissance == "" || teleleve == 0 || telparent == 0)
+            //Séléction du médicament
+            if (vi.medic == null)
             {
-                MessageBox.Show("Veuillez rentrer toutes les informations obligatoires.");
+                comboBoxMedic.SelectedIndex = 0;
             }
             else
             {
-                //On modifie l'objet élève
-                InfirmerieBO.Eleve el = new InfirmerieBO.Eleve(global_el.id, nom, prenom, dateDeNaissance, teleleve, telparent, classe, tiersTemps, commSante);
-                if (ConnexionBLL.editEleve(el))
+                comboBoxMedic.SelectedItem = vi.medic;
+            }
+
+            //Séléction de la suite
+            if (vi.suite == "Domicile")
+            {
+                comboBoxSuite.SelectedIndex = 1;
+            }
+            if (vi.suite == "Hôpital")
+            {
+                comboBoxSuite.SelectedIndex = 2;
+            }
+            else
+            {
+                comboBoxSuite.SelectedIndex = 0;
+            }
+
+
+            comboBoxSuite.SelectedItem = vi.suite;
+
+            global_vi = vi;
+        }
+            private void buttonRetour_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void buttonDummyAdd_Click(object sender, EventArgs e)
+        {
+            //Récupération des données saisies
+            string date = textBoxDate.Text;
+            string arrivee = textBoxHeureArrivee.Text;
+            string depart = textBoxHeureDepart.Text;
+            string suite = comboBoxSuite.SelectedItem.ToString();
+            string motif = textBoxMotif.Text;
+            string comm = textBoxComm.Text;
+
+            InfirmerieBO.Medicament medic = comboBoxMedic.SelectedItem as InfirmerieBO.Medicament;
+
+            int? qte;
+            if (textBoxQteMedic.Text == "")
+            {
+                qte = null;
+            }
+            else
+            {
+                qte = Int32.Parse(textBoxQteMedic.Text);
+            }
+
+            bool parentsprev = checkBoxParentsPrev.Checked;
+
+            if (date == "" || arrivee == "" || depart == "" || motif == "")
+            {
+                MessageBox.Show("Veuillez remplir les champs obligatoires.");
+            }
+            else
+            {
+                //Si le médicament "Aucun" est séléctionné, on le met à null pour l'insertion
+                if (medic.id == 0)
                 {
-                    MessageBox.Show("Élève modifié!");
+                    medic = null;
+                }
+
+                InfirmerieBO.Visite newvi = new InfirmerieBO.Visite(global_vi.id, global_vi.eleve, medic, qte, date, arrivee, depart, motif, comm, parentsprev, suite, null);
+                if (ConnexionBLL.editVisite(newvi))
+                {
+                    MessageBox.Show("Visite modifiée!");
                 }
                 else
                 {
                     MessageBox.Show("Une erreur est survenue.");
                 }
             }
+
+        }
+
+        private void buttonRetour_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            Visite v = new Visite();
+            v.ShowDialog();
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDummyAdd_Click_1(object sender, EventArgs e)
+        {
 
         }
     }
