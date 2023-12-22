@@ -140,6 +140,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statistique.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Statistique.Designer.cs">
+      <DependentUpon>Statistique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StatsGraphe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StatsGraphe.Designer.cs">
+      <DependentUpon>StatsGraphe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Visite.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +212,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Statistique.resx">
+      <DependentUpon>Statistique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatsGraphe.resx">
+      <DependentUpon>StatsGraphe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Visite.resx">
       <DependentUpon>Visite.cs</DependentUpon>
     </EmbeddedResource>
